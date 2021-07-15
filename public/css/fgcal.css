@@ -1,0 +1,43 @@
+.fgcalendar {
+  font-size: 0.85em;
+}
+
+#fgcalendar table {
+  margin: 0;
+}
+
+/*
+#calendar table {
+  margin: 0 !important;
+} */
+/* 
+.fc-view-container {
+  margin: 0 !important;
+} */
+
+.fc-view-container table,
+.fc-view-container thead {
+  background: 0;
+  color: #000;
+}
+
+/* #calendar {
+  max-width: 900px;
+  margin: 40px auto;
+} */
+
+/* .fc-day-grid-container .fc-scroller {
+  height: auto !important;
+  overflow-y: ;
+} */
+
+/* Allows wrapping of titles (weird) */
+.fc-day-grid-event .fc-content {
+  white-space: normal;
+}
+
+a.fc-day-grid-event,
+a.fc-day-grid-event:hover {
+  box-shadow: none;
+  cursor: pointer;
+}
