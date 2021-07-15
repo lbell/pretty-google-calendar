@@ -9,22 +9,33 @@ document.addEventListener("DOMContentLoaded", function () {
     // locale: fgcalSettings['wplocale'],
     // plugins: ["googleCalendarPlugin", "dayGrid", "listPlugin"],
     defaultView: "dayGridMonth",
-
     height: "auto",
 
     timeZone: fgcalSettings["fixed_tz"],
     timeZoneImpl: "UTC-coercion",
 
+    // Add buttons to toolbar
     headerToolbar: {
       left: "prev,next today",
       center: "title",
       right: "dayGridMonth,listMonth",
     },
+
+    // Take over event click
     eventClick: function (info) {
       if (fgcalSettings["use_tooltip"]) {
         info.jsEvent.preventDefault();
         tooltipRender(info);
         // alert("hi"); // DEBUG
+      }
+    },
+
+    // Change view on window resize
+    windowResize: function (view) {
+      if (window.innerWidth >= 768) {
+        calendar.changeView("dayGridMonth");
+      } else {
+        calendar.changeView("listMonth");
       }
     },
 
