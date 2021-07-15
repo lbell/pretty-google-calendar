@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("fgcalendar");
   calendarEl.innerHTML = "";
 
+  console.log(fgcalSettings); // DEBUG
+
   var calendar = new FullCalendar.Calendar(calendarEl, {
     // Locale is untested -- proceed with caution.
     // locale: fgcalSettings['wplocale'],
