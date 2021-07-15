@@ -22,15 +22,14 @@ function fgcal_shortcode($atts) {
 
 	// Full Calendar
 	wp_enqueue_script('fullcalendar');
-	wp_enqueue_script('fc_daygrid');
-	wp_enqueue_script('fc_list');
-	wp_enqueue_script('fc_gcal');
-	wp_enqueue_script('fc_locales');
+	// wp_enqueue_script('fc_locales');
 
 	// Popper / Tooltip
 	if (isset($fgcalSettings['use_tooltip'])) {
 		wp_enqueue_script('popper');
 		wp_enqueue_script('tooltip');
+		wp_enqueue_script('fgcal_tooltip');
+
 		wp_enqueue_style('fgcal_tooltip');
 	}
 
@@ -40,9 +39,6 @@ function fgcal_shortcode($atts) {
 
 	// Load Styles
 	wp_enqueue_style('fullcalendar');
-	wp_enqueue_style('fc_daygrid');
-	wp_enqueue_style('fc_list');
-	wp_enqueue_style('fgcal_css');
 
 	// Pass PHP data to script(s)
 	wp_localize_script('fgcal_loader', 'fgcalSettings', $fgcalSettings);

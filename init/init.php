@@ -46,9 +46,7 @@ function fgcal_register_thumbnail() {
 function fgcal_register_frontend_css() {
 	wp_register_style('fgcal_css', FGCAL_URL . 'public/css/fgcal.css');
 	wp_register_style('fgcal_tooltip', FGCAL_URL . 'public/css/tooltip.css');
-	wp_register_style('fullcalendar', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css');
-	wp_register_style('fc_daygrid', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css');
-	wp_register_style('fc_list', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css');
+	wp_register_style('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.css'); // TODO: main.min.css
 }
 
 
@@ -56,17 +54,15 @@ function fgcal_register_frontend_css() {
  * Register front-end scripts
  */
 function fgcal_register_frontend_js() {
-	wp_register_script('fullcalendar', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js', null, null, true);
-	wp_register_script('fc_daygrid', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js', null, null, true);
-	wp_register_script('fc_list', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js', null, null, true);
-	wp_register_script('fc_gcal', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/google-calendar/main.min.js', null, null, true);
-	wp_register_script('fc_locales', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales-all.js', null, null, true);
+	// wp_register_script('fc_locales', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales-all.js', null, null, true);
+	wp_register_script('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.js', null, null, true); // TODO: main.min.js
 
 	wp_register_script('popper', 'https://unpkg.com/popper.js/dist/umd/popper.min.js', null, null, true);
 	wp_register_script('tooltip', 'https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js', null, null, true);
 
 	wp_register_script('fgcal_helpers', FGCAL_URL . '/public/js/helpers.js', null, null, true);
 	wp_register_script('fgcal_loader', FGCAL_URL . '/public/js/fgcal.js', null, null, true);
+	wp_register_script('fgcal_tooltip', FGCAL_URL . '/public/js/tooltip.js', null, null, true);
 }
 
 
