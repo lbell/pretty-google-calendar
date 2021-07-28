@@ -77,7 +77,7 @@ function fgcal_init() {
 	fgcal_register_frontend_css();
 	fgcal_register_frontend_js();
 	fgcal_add_settings_page();
-	wp_enqueue_style('list-card-css');
+	// wp_enqueue_style('list-card-css');
 }
 add_action('init', 'fgcal_init', 0);
 

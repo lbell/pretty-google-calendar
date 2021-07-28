@@ -39,6 +39,7 @@ function fgcal_shortcode($atts) {
 
 	// Load Styles
 	wp_enqueue_style('fullcalendar');
+	wp_enqueue_style('fgcal_css');
 
 	// Pass PHP data to script(s)
 	wp_localize_script('fgcal_loader', 'fgcalSettings', $fgcalSettings);

@@ -1,25 +1,23 @@
-.fgcalendar {
-  font-size: 0.85em;
-}
-
+/* Remove empty bars above and below calendar */
 #fgcalendar table {
-  margin: 0;
+  margin: 0px;
 }
 
 /*
 #calendar table {
   margin: 0 !important;
 } */
+
 /* 
 .fc-view-container {
   margin: 0 !important;
 } */
 
-.fc-view-container table,
+/* .fc-view-container table,
 .fc-view-container thead {
   background: 0;
   color: #000;
-}
+} */
 
 /* #calendar {
   max-width: 900px;
@@ -32,12 +30,12 @@
 } */
 
 /* Allows wrapping of titles (weird) */
-.fc-day-grid-event .fc-content {
-  white-space: normal;
+.fc-event-title {
+  /* white-space: normal; */
 }
-
+/* 
 a.fc-day-grid-event,
 a.fc-day-grid-event:hover {
   box-shadow: none;
   cursor: pointer;
-}
+} */

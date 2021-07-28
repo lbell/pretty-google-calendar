@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // locale: fgcalSettings['wplocale'],
     // plugins: ["googleCalendarPlugin", "dayGrid", "listPlugin"],
     defaultView: "dayGridMonth",
-    height: "auto",
+    // height: "auto",
 
     timeZone: fgcalSettings["fixed_tz"],
     timeZoneImpl: "UTC-coercion",
