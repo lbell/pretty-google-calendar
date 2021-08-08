@@ -1,10 +1,15 @@
 function tooltipRender(info) {
-  // console.log(info); // DEBUG
+  console.log(info); // DEBUG
+  console.log(Calendar.formatDate(info.event.startStr)); // DEBUG
 
   var calID = info.event.source.internalEventSource.meta.googleCalendarId;
   var eventID = getEventId(info.event.url);
 
-  var toolTitle = `<div class="toolhead"><h2> ${info.event.title} </h2></div> `;
+  var toolTitle = `
+  	<div class="toolhead">
+  	<h2> ${info.event.title} </h2>
+	  <p> ${info.event.startStr}</p>
+  	</div> `;
   toolTitle += "<hr />";
   // toolTitle += breakify(urlify(info.event.extendedProps.description));
   toolTitle += breakify(info.event.extendedProps.description);
@@ -17,8 +22,8 @@ function tooltipRender(info) {
     title: toolTitle,
     // placement: 'bottom',
     // reference: 'fgcalendar',
-    // trigger: 'hover',
-    trigger: "click",
+    trigger: "hover",
+    // trigger: "click",
     closeOnClickOutside: true,
     container: "body",
     html: true,

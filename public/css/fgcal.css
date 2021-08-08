@@ -3,6 +3,24 @@
   margin: 0px;
 }
 
+.fc-day-past,
+.fc-event-past {
+  opacity: 50%;
+}
+
+.fc-h-event .fc-event-main-frame {
+  display: block;
+}
+
+/* Allows wrapping of titles */
+.fc-event-title {
+  white-space: normal;
+}
+
+/* .fc-daygrid-event-dot {
+  display: none;
+} */
+
 /*
 #calendar table {
   margin: 0 !important;
@@ -29,10 +47,6 @@
   overflow-y: ;
 } */
 
-/* Allows wrapping of titles (weird) */
-.fc-event-title {
-  /* white-space: normal; */
-}
 /* 
 a.fc-day-grid-event,
 a.fc-day-grid-event:hover {
