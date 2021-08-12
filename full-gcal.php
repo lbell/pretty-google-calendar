@@ -31,17 +31,11 @@ define('FGCAL_URL', plugin_dir_url(__FILE__));
 
 load_plugin_textdomain('fgcal', false, FGCAL_DIR . 'languages');
 
-// require(FGCAL_DIR . 'util/dropdown-category-callback.php');
-// require(FGCAL_DIR . 'util/post-entries.php');
 require(FGCAL_DIR . 'util/utils.php');
-// require(FGCAL_DIR . 'util/column-fill.php');
 
 require(FGCAL_DIR . 'admin/admin.php');
-
-// require(FGCAL_DIR . 'init/templates.php');
-// require(FGCAL_DIR . 'init/admin/position-meta-box.php');
 require(FGCAL_DIR . 'init/shortcode.php');
-// require(FGCAL_DIR . 'init/admin/directory-settings-page.php');
+// require(FGCAL_DIR . 'init/admin/fgcal-settings-page.php');
 require(FGCAL_DIR . 'init/init.php');
 
 

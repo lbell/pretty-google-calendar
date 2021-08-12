@@ -1,6 +1,7 @@
 function tooltipRender(info) {
   console.log(info); // DEBUG
-  console.log(Calendar.formatDate(info.event.startStr)); // DEBUG
+
+  //   console.log(Calendar.formatDate(info.event.startStr)); // DEBUG
 
   var calID = info.event.source.internalEventSource.meta.googleCalendarId;
   var eventID = getEventId(info.event.url);

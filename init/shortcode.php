@@ -19,17 +19,16 @@ function fgcal_shortcode($atts) {
 	// $fgcalSettings['wptzoffset'] = get_option('gmt_offset');
 
 	// Load Scripts
-
 	// Full Calendar
 	wp_enqueue_script('fullcalendar');
 	// wp_enqueue_script('fc_locales');
 
-	// Popper / Tooltip
+	// Popper / Tippy
 	if (isset($fgcalSettings['use_tooltip'])) {
 		wp_enqueue_script('popper');
-		wp_enqueue_script('tooltip');
-		wp_enqueue_script('fgcal_tooltip');
+		wp_enqueue_script('tippy');
 
+		wp_enqueue_script('fgcal_tooltip');
 		wp_enqueue_style('fgcal_tooltip');
 	}
 

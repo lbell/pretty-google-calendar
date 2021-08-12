@@ -7,40 +7,34 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendar = new FullCalendar.Calendar(calendarEl, {
     // Locale is untested -- proceed with caution.
     // locale: fgcalSettings['wplocale'],
-    defaultView: "dayGridMonth",
+    // defaultView: "dayGridMonth",
     views: {
+      // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
       dayGrid: {
-        // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
         eventTimeFormat: {
-          // like '14:30:00'
           hour: "numeric",
           minute: "2-digit",
           meridiem: "short",
         },
       },
     },
-    eventDisplay: "block",
-
+    eventDisplay: "block", // Adds border and bocks to events instead of bulleted list (default)
     // height: "auto",
 
     timeZone: fgcalSettings["fixed_tz"],
-    timeZoneImpl: "UTC-coercion",
+    // timeZoneImpl: "UTC-coercion",
 
-    // Add buttons to toolbar
     headerToolbar: {
       left: "prev,next today",
       center: "title",
       right: "dayGridMonth,listMonth",
     },
 
-    // Take over event click
     eventClick: function (info) {
-      console.log(info); // DEBUG
       if (fgcalSettings["use_tooltip"]) {
-        info.jsEvent.preventDefault();
-        tooltipRender(info);
-
-        // alert("hi"); // DEBUG
+        info.jsEvent.preventDefault(); // Prevent following link
+        console.log(info.event.startStr); // DEBUG
+        // tippyRender(info);
       }
     },
 
@@ -55,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // displayEventTime: true, // don't show the time column in list view
 
+    // Pull GCal from settings.
     googleCalendarApiKey: fgcalSettings["google_api"],
     events: {
       googleCalendarId: fgcalSettings["gcal"],
@@ -62,16 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   calendar.render();
-
-  //   // Turn on tooltip if set:
-  //   if (fgcalSettings["use_tooltip"]) {
-  //     calendar.setOption("eventRender", function (info) {
-  //       tooltipRender(info);
-  //     });
-  //     calendar.setOption("eventClick", function (info) {
-  //       info.jsEvent.preventDefault();
-  //     });
-  //   }
 
   var tzMessage =
     fgcalSettings["fixed_tz"] === "local"
