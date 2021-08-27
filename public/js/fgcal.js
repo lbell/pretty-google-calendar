@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log(fgcalSettings); // DEBUG
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
+    // Pull GCal from settings.
+    googleCalendarApiKey: fgcalSettings["google_api"],
+    events: {
+      googleCalendarId: fgcalSettings["gcal"],
+    },
+
     // Locale is untested -- proceed with caution.
     // locale: fgcalSettings['wplocale'],
     // defaultView: "dayGridMonth",
@@ -19,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
     eventDisplay: "block", // Adds border and bocks to events instead of bulleted list (default)
-    // height: "auto",
+    height: "auto",
 
     timeZone: fgcalSettings["fixed_tz"],
     // timeZoneImpl: "UTC-coercion",
@@ -30,11 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
       right: "dayGridMonth,listMonth",
     },
 
+    eventDidMount: function (info) {
+      if (fgcalSettings["use_tooltip"]) {
+        tippyRender(info);
+      }
+    },
+
     eventClick: function (info) {
       if (fgcalSettings["use_tooltip"]) {
         info.jsEvent.preventDefault(); // Prevent following link
-        console.log(info.event.startStr); // DEBUG
-        // tippyRender(info);
       }
     },
 
@@ -48,12 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     // displayEventTime: true, // don't show the time column in list view
-
-    // Pull GCal from settings.
-    googleCalendarApiKey: fgcalSettings["google_api"],
-    events: {
-      googleCalendarId: fgcalSettings["gcal"],
-    },
   });
 
   calendar.render();

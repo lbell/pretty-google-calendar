@@ -27,9 +27,10 @@ function fgcal_shortcode($atts) {
 	if (isset($fgcalSettings['use_tooltip'])) {
 		wp_enqueue_script('popper');
 		wp_enqueue_script('tippy');
+		wp_enqueue_script('fgcal_tippy');
 
-		wp_enqueue_script('fgcal_tooltip');
-		wp_enqueue_style('fgcal_tooltip');
+		wp_enqueue_style('fgcal_tippy');
+		wp_enqueue_style('tippy_light');
 	}
 
 	// Load Local Scripts
