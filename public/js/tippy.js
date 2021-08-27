@@ -1,19 +1,16 @@
 function tippyRender(info) {
   console.log(info); // DEBUG
-  console.log("Test!"); // DEBUG
-  console.log(info.event.start.toLocaleString()); // DEBUG
-  console.log(info.event.start.getHours()); // DEBUG
-  console.log(info.event.start.getMinutes()); // DEBUG
-  console.log(info.event.start.toISOString()); // DEBUG
-
-  //   console.log(Calendar.formatDate(info.event.startStr)); // DEBUG
 
   var calID = info.event.source.internalEventSource.meta.googleCalendarId;
   var eventID = getEventId(info.event.url);
 
+  let timeString = info.event.allDay
+    ? `${info.event.start.toDateString()}, All Day`
+    : info.event.start.toLocaleString();
+
   var toolContent = `
 		<h2> ${info.event.title} </h2>
-		<p> ${info.event.start.toLocaleString()}</p>`;
+		<p> ${timeString}</p>`;
   // toolContent += breakify(urlify(info.event.extendedProps.description));
   toolContent += breakify(info.event.extendedProps.description);
 
