@@ -3,6 +3,7 @@ function tippyRender(info) {
 
   var calID = info.event.source.internalEventSource.meta.googleCalendarId;
   var eventID = getEventId(info.event.url);
+  let isMobile = window.innerWidth <= 768;
 
   let timeString = info.event.allDay
     ? `${info.event.start.toDateString()}, All Day`
@@ -22,9 +23,10 @@ function tippyRender(info) {
     content: toolContent,
     theme: "light", // TODO: from settings
     allowHTML: true,
-    placement: "auto",
+    placement: isMobile ? "bottom" : "auto",
     interactive: "true", // Allows clicking inside
     appendTo: document.getElementById("fgcalendar"),
     maxWidth: 600, // TODO: from settings
+    boundary: "window",
   });
 }

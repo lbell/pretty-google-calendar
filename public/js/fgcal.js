@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("fgcalendar");
   calendarEl.innerHTML = "";
+  let width = window.innerWidth;
+
+  function mobileCheck() {
+    if (window.innerWidth <= 768) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  console.log(mobileCheck()); // DEBUG
 
   //   console.log(fgcalSettings); // DEBUG
 
@@ -13,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Locale is untested -- proceed with caution.
     // locale: fgcalSettings['wplocale'],
-    // defaultView: "dayGridMonth",
+
     views: {
       // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
       dayGrid: {
@@ -48,12 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
 
+    initialView: window.innerWidth <= 768 ? "listMonth" : "dayGridMonth",
+
     // Change view on window resize
     windowResize: function (view) {
-      if (window.innerWidth >= 768) {
-        calendar.changeView("dayGridMonth");
-      } else {
-        calendar.changeView("listMonth");
+      // Catch mobile chrome, which changes window size as nav bar appears
+      // so only fire if width has changed.
+      if (window.innerWidth !== width) {
+        if (window.innerWidth <= 768) {
+          calendar.changeView("listMonth");
+        } else {
+          calendar.changeView("dayGridMonth");
+        }
       }
     },
 
