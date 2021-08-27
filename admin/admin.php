@@ -121,7 +121,7 @@ class fgcalSettings {
 	 */
 	public function print_section_info() {
 		print '<p>Shortcode Usage: [full_gcal gcal="address@group.calendar.google.com"] </p>
-      <p>You must have a google calendar API. See: <a href="https://fullcalendar.io/docs/v4/google-calendar">https://fullcalendar.io/docs/v4/google-calendar</a></p>';
+      <p>You must have a google calendar API. See: <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>';
 	}
 
 	/**
