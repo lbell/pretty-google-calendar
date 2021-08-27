@@ -3,7 +3,7 @@
 Plugin Name: Full GCal
 Plugin URI: https://github.com/lbell/full-gcal
 Description: Google Calendars that aren't ugly.
-Version: 1.0.0
+Version: 1.1.0
 Author: LBell
 Author URI: http://lorenbell.com
 Text Domain: fgcal
@@ -25,6 +25,7 @@ Text Domain: fgcal
 */
 
 
+define('FGCAL_VER', "1.1.0");
 define('FGCAL_DIR', plugin_dir_path(__FILE__)); // Trailing slash
 define('FGCAL_TEMPLATE_DIR', FGCAL_DIR . 'templates/');
 define('FGCAL_URL', plugin_dir_url(__FILE__));

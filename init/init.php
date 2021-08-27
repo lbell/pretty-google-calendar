@@ -44,10 +44,10 @@ function fgcal_register_thumbnail() {
  * Register front-end styles
  */
 function fgcal_register_frontend_css() {
-	wp_register_style('fgcal_css', FGCAL_URL . 'public/css/fgcal.css');
-	wp_register_style('fgcal_tippy', FGCAL_URL . 'public/css/tippy.css');
-	wp_register_style('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.min.css'); // TODO: main.min.css
-	wp_register_style('tippy_light', 'https://unpkg.com/tippy.js@6/themes/light.css');
+	wp_register_style('fgcal_css', FGCAL_URL . 'public/css/fgcal.css', null, FGCAL_VER);
+	wp_register_style('fgcal_tippy', FGCAL_URL . 'public/css/tippy.css', null, FGCAL_VER);
+	wp_register_style('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.min.css', null, null); // TODO: main.min.css
+	wp_register_style('tippy_light', 'https://unpkg.com/tippy.js@6/themes/light.css', null, null);
 }
 
 
@@ -61,9 +61,9 @@ function fgcal_register_frontend_js() {
 	wp_register_script('popper', 'https://unpkg.com/@popperjs/core@2', null, null, true);
 	wp_register_script('tippy', 'https://unpkg.com/tippy.js@6', null, null, true);
 
-	wp_register_script('fgcal_helpers', FGCAL_URL . 'public/js/helpers.js', null, null, true);
-	wp_register_script('fgcal_loader', FGCAL_URL . 'public/js/fgcal.js', null, null, true);
-	wp_register_script('fgcal_tippy', FGCAL_URL . 'public/js/tippy.js', null, null, true);
+	wp_register_script('fgcal_helpers', FGCAL_URL . 'public/js/helpers.js', null, FGCAL_VER, true);
+	wp_register_script('fgcal_loader', FGCAL_URL . 'public/js/fgcal.js', null, FGCAL_VER, true);
+	wp_register_script('fgcal_tippy', FGCAL_URL . 'public/js/tippy.js', null, FGCAL_VER, true);
 }
 
 
