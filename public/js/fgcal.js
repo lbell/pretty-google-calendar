@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("fgcalendar");
   calendarEl.innerHTML = "";
 
-  console.log(fgcalSettings); // DEBUG
+  //   console.log(fgcalSettings); // DEBUG
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     // Pull GCal from settings.

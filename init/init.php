@@ -56,14 +56,9 @@ function fgcal_register_frontend_css() {
  */
 function fgcal_register_frontend_js() {
 	// wp_register_script('fc_locales', 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales-all.js', null, null, true);
-
 	wp_register_script('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.js', null, null, true); // TODO: main.min.js
 
-	// wp_register_script('popper', 'https://unpkg.com/popper.js/dist/umd/popper.min.js', null, null, true);
-	// wp_register_script('tooltip', 'https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js', null, null, true);
-
 	wp_register_script('popper', 'https://unpkg.com/@popperjs/core@2', null, null, true);
-
 	wp_register_script('tippy', 'https://unpkg.com/tippy.js@6', null, null, true);
 
 	wp_register_script('fgcal_helpers', FGCAL_URL . 'public/js/helpers.js', null, null, true);
