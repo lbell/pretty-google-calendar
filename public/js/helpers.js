@@ -1,4 +1,14 @@
 /**
+ * Tests whether the window size is equal to or less than 768... an arbitrary
+ * standard for what is mobile...
+ *
+ * @returns boolean
+ */
+function isMobile(width = 768) {
+  return window.innerWidth <= width;
+}
+
+/**
  * Detect URLs and encase them in <a>
  *
  * @param {*} text
@@ -9,7 +19,7 @@ function urlify(text) {
   if (text) {
     return text.replace(urlRegex, '<a target="_blank" href="$1">$1</a>');
   }
-  return '';
+  return "";
 }
 
 /**
@@ -20,11 +30,10 @@ function urlify(text) {
  */
 function breakify(text) {
   if (text) {
-    return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+    return text.replace(/(?:\r\n|\r|\n)/g, "<br />");
   }
-  return '';
+  return "";
 }
-
 
 /**
  * Create map button
@@ -33,13 +42,14 @@ function breakify(text) {
  * @returns Formatted map button
  */
 function mapify(text) {
-  var footer = "";
+  let footer = "";
   if (text) {
-    footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(text)}">Map</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
+    footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
+      text
+    )}">Map</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
   }
   return footer;
 }
-
 
 /**
  * Converts url to a formatted <a href=... link
@@ -53,7 +63,6 @@ function linkify(url) {
   }
 }
 
-
 /**
  * get event ID from URL
  *
@@ -62,9 +71,8 @@ function linkify(url) {
  */
 function getEventId(url) {
   // console.log(url);
-  return url.split('eid=')[1];
+  return url.split("eid=")[1];
 }
-
 
 /**
  * Create GCalendar Link IDs

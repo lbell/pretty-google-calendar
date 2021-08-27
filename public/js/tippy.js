@@ -1,15 +1,15 @@
 function tippyRender(info) {
   //   console.log(info); // DEBUG
 
-  var calID = info.event.source.internalEventSource.meta.googleCalendarId;
-  var eventID = getEventId(info.event.url);
-  let isMobile = window.innerWidth <= 768;
+  //   const calID = info.event.source.internalEventSource.meta.googleCalendarId;
+  //   const eventID = getEventId(info.event.url);
+  //   const isMobile = window.innerWidth <= 768;
 
-  let timeString = info.event.allDay
+  const timeString = info.event.allDay
     ? `${info.event.start.toDateString()}, All Day`
     : info.event.start.toLocaleString();
 
-  var toolContent = `
+  let toolContent = `
 		<h2> ${info.event.title} </h2>
 		<p> ${timeString}</p>`;
   // toolContent += breakify(urlify(info.event.extendedProps.description));
@@ -23,7 +23,21 @@ function tippyRender(info) {
     content: toolContent,
     theme: "light", // TODO: from settings
     allowHTML: true,
-    placement: isMobile ? "bottom" : "auto",
+    placement: isMobile() ? "bottom" : "auto",
+    popperOptions: isMobile()
+      ? {
+          modifiers: [
+            {
+              name: "flip",
+              enabled: false,
+              options: {
+                // flipBehavior: ['bottom', 'right', 'top']
+                // fallbackPlacements: ['right', 'top'],
+              },
+            },
+          ],
+        }
+      : "",
     interactive: "true", // Allows clicking inside
     appendTo: document.getElementById("fgcalendar"),
     maxWidth: 600, // TODO: from settings

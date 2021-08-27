@@ -1,20 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var calendarEl = document.getElementById("fgcalendar");
+  const calendarEl = document.getElementById("fgcalendar");
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  function mobileCheck() {
-    if (window.innerWidth <= 768) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-  console.log(mobileCheck()); // DEBUG
-
   //   console.log(fgcalSettings); // DEBUG
 
-  var calendar = new FullCalendar.Calendar(calendarEl, {
+  const calendar = new FullCalendar.Calendar(calendarEl, {
     // Pull GCal from settings.
     googleCalendarApiKey: fgcalSettings["google_api"],
     events: {
@@ -33,18 +24,36 @@ document.addEventListener("DOMContentLoaded", function () {
           meridiem: "short",
         },
       },
+      // Custom View
+      listFourWeeks: {
+        type: "list",
+        duration: { days: 28 },
+        buttonText: "list",
+      },
     },
+
+    // Day grid options
     eventDisplay: "block", // Adds border and bocks to events instead of bulleted list (default)
     height: "auto",
+    fixedWeekCount: false, // True: 6 weeks, false: flex for month
+
+    // list options
+    listDayFormat: { weekday: "long", month: "long", day: "numeric" },
 
     timeZone: fgcalSettings["fixed_tz"],
     // timeZoneImpl: "UTC-coercion",
 
-    headerToolbar: {
-      left: "prev,next today",
-      center: "title",
-      right: "dayGridMonth,listMonth",
-    },
+    headerToolbar: isMobile()
+      ? {
+          left: "prev,next today",
+          center: "",
+          right: "dayGridMonth,listFourWeeks",
+        }
+      : {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,listFourWeeks",
+        },
 
     eventDidMount: function (info) {
       if (fgcalSettings["use_tooltip"]) {
@@ -58,15 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
 
-    initialView: window.innerWidth <= 768 ? "listMonth" : "dayGridMonth",
+    initialView: isMobile() ? "listFourWeeks" : "dayGridMonth",
 
     // Change view on window resize
     windowResize: function (view) {
       // Catch mobile chrome, which changes window size as nav bar appears
       // so only fire if width has changed.
       if (window.innerWidth !== width) {
-        if (window.innerWidth <= 768) {
-          calendar.changeView("listMonth");
+        if (isMobile()) {
+          calendar.changeView("listFourWeeks");
         } else {
           calendar.changeView("dayGridMonth");
         }
@@ -78,9 +87,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   calendar.render();
 
-  var tzMessage =
+  // TODO: may be fixed in v6
+  const tzMessage =
     fgcalSettings["fixed_tz"] === "local"
       ? "(Times may be adjusted to your computer's timezone.)"
       : "(Times displayed in timezone of venue.)";
-  document.getElementById("tz_message").innerHTML = tzMessage;
+  //   document.getElementById("tz_message").innerHTML = tzMessage;
 });
