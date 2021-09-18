@@ -37,4 +37,4 @@ require(PGCAL_DIR . 'admin/admin.php');
 require(PGCAL_DIR . 'init/shortcode.php');
 require(PGCAL_DIR . 'init/init.php');
 
-require(PGCAL_DIR . 'dev/console-log.php'); // DEBUG
+// require(PGCAL_DIR . 'dev/console-log.php'); // DEBUG
