@@ -11,28 +11,28 @@ class pgcalSettings {
 	 * Start up
 	 */
 	public function __construct() {
-		add_action('admin_menu', array($this, 'add_plugin_page'));
-		add_action('admin_init', array($this, 'page_init'));
+		add_action('admin_menu', array($this, 'pgcal_add_plugin_page'));
+		add_action('admin_init', array($this, 'pgcal_page_init'));
 	}
 
 	/**
 	 * Add options page
 	 */
-	public function add_plugin_page() {
+	public function pgcal_add_plugin_page() {
 		// This page will be under "Settings"
 		add_options_page(
 			'Settings Admin',
 			'Pretty Google Calendar Settings',
 			'manage_options',
 			'pgcal-setting-admin',
-			array($this, 'create_admin_page')
+			array($this, 'pgcal_create_admin_page')
 		);
 	}
 
 	/**
 	 * Options page callback
 	 */
-	public function create_admin_page() {
+	public function pgcal_create_admin_page() {
 		// Set class property
 		$this->options = get_option('pgcal_settings');
 ?>
@@ -53,24 +53,24 @@ class pgcalSettings {
 	/**
 	 * Register and add settings
 	 */
-	public function page_init() {
+	public function pgcal_page_init() {
 		register_setting(
 			'pgcal_option_group', // Option group
 			'pgcal_settings', // Option name
-			array($this, 'sanitize') // Sanitize
+			array($this, 'pgcal_sanitize') // Sanitize
 		);
 
 		add_settings_section(
 			'pgcal-main-settings',
 			'Main Settings',
-			array($this, 'print_section_info'), // Callback
+			array($this, 'pgcal_print_section_info'), // Callback
 			'pgcal-setting-admin' // Page
 		);
 
 		add_settings_field(
 			'google_api',
 			'Google API',
-			array($this, 'gapi_callback'), // Callback
+			array($this, 'pgcal_gapi_callback'), // Callback
 			'pgcal-setting-admin', // Page
 			'pgcal-main-settings' // Section
 		);
@@ -78,7 +78,7 @@ class pgcalSettings {
 		add_settings_field(
 			'use_tooltip',
 			'Use Tooltip',
-			array($this, 'tooltip_callback'),
+			array($this, 'pgcal_tooltip_callback'),
 			'pgcal-setting-admin',
 			'pgcal-main-settings'
 		);
@@ -89,7 +89,7 @@ class pgcalSettings {
 	 *
 	 * @param array $input Contains all settings fields as array keys
 	 */
-	public function sanitize($input) {
+	public function pgcal_sanitize($input) {
 		$sanitized_input = array();
 		if (isset($input['google_api']))
 			// TODO test api?
@@ -104,7 +104,7 @@ class pgcalSettings {
 	/**
 	 * Print the Section text
 	 */
-	public function print_section_info() {
+	public function pgcal_print_section_info() {
 		print '<p>Shortcode Usage: [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
       <p>You must have a google calendar API. See: <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>';
 	}
@@ -113,7 +113,7 @@ class pgcalSettings {
 	/**
 	 * Get the settings option array and print one of its values
 	 */
-	public function gapi_callback() {
+	public function pgcal_gapi_callback() {
 		printf(
 			'<input type="text" id="google_api" name="pgcal_settings[google_api]" value="%s" />',
 			isset($this->options['google_api']) ? esc_attr($this->options['google_api']) : ''
@@ -121,7 +121,7 @@ class pgcalSettings {
 	}
 
 
-	public function tooltip_callback() {
+	public function pgcal_tooltip_callback() {
 		printf(
 			'<input title="Use the popper/tooltip plugin to display event information." type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
 			isset($this->options['use_tooltip']) ? 'checked' : ''

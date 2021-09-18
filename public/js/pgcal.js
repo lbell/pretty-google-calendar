@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     timeZone: pgcalSettings["fixed_tz"], // TODO: Necessary?
 
-    headerToolbar: isMobile()
+    headerToolbar: pgcal_is_mobile()
       ? {
           left: "prev,next today",
           center: "",
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     eventDidMount: function (info) {
       if (pgcalSettings["use_tooltip"]) {
-        tippyRender(info);
+        pgcal_tippyRender(info);
       }
     },
 
@@ -63,14 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
 
-    initialView: isMobile() ? "listFourWeeks" : "dayGridMonth",
+    initialView: pgcal_is_mobile() ? "listFourWeeks" : "dayGridMonth",
 
     // Change view on window resize
     windowResize: function (view) {
       // Catch mobile chrome, which changes window size as nav bar appears
       // so only fire if width has changed.
       if (window.innerWidth !== width) {
-        if (isMobile()) {
+        if (pgcal_is_mobile()) {
           calendar.changeView("listFourWeeks");
         } else {
           calendar.changeView("dayGridMonth");

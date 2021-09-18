@@ -1,4 +1,4 @@
-function tippyRender(info) {
+function pgcal_tippyRender(info) {
   // console.log(info.event); // DEBUG
 
   const timeString = info.event.allDay
@@ -8,17 +8,19 @@ function tippyRender(info) {
   let toolContent = `
 		<h2> ${info.event.title} </h2>
 		<p> ${timeString}</p>`;
-  toolContent += breakify(info.event.extendedProps.description);
+  toolContent += pgcal_breakify(info.event.extendedProps.description);
 
-  toolContent += `<div class="toolloc">${mapify(info.event.extendedProps.location)} ${linkify(info.event.url)}</div>`;
+  toolContent += `<div class="toolloc">${pgcal_mapify(info.event.extendedProps.location)} ${pgcal_linkify(
+    info.event.url
+  )}</div>`;
 
   tippy(info.el, {
     trigger: "click",
     content: toolContent,
     theme: "light", // TODO: from settings
     allowHTML: true,
-    placement: isMobile() ? "bottom" : "auto",
-    popperOptions: isMobile()
+    placement: pgcal_is_mobile() ? "bottom" : "auto",
+    popperOptions: pgcal_is_mobile()
       ? {
           modifiers: [
             {
