@@ -1,7 +1,7 @@
 <?php
 
 /** @package  */
-class fgcalSettings {
+class pgcalSettings {
 	/**
 	 * Holds the values to be used in the fields callbacks
 	 */
@@ -24,7 +24,7 @@ class fgcalSettings {
 			'Settings Admin',
 			'Full G Calendar Settings',
 			'manage_options',
-			'fgcal-setting-admin',
+			'pgcal-setting-admin',
 			array($this, 'create_admin_page')
 		);
 	}
@@ -34,15 +34,15 @@ class fgcalSettings {
 	 */
 	public function create_admin_page() {
 		// Set class property
-		$this->options = get_option('fgcal_settings');
+		$this->options = get_option('pgcal_settings');
 ?>
 		<div class="wrap">
 			<h1>Full G Calendar Settings</h1>
 			<form method="post" action="options.php">
 				<?php
 				// This prints out all hidden setting fields
-				settings_fields('fgcal_option_group');
-				do_settings_sections('fgcal-setting-admin');
+				settings_fields('pgcal_option_group');
+				do_settings_sections('pgcal-setting-admin');
 				submit_button();
 				?>
 			</form>
@@ -55,40 +55,40 @@ class fgcalSettings {
 	 */
 	public function page_init() {
 		register_setting(
-			'fgcal_option_group', // Option group
-			'fgcal_settings', // Option name
+			'pgcal_option_group', // Option group
+			'pgcal_settings', // Option name
 			array($this, 'sanitize') // Sanitize
 		);
 
 		add_settings_section(
-			'fgcal-main-settings',
+			'pgcal-main-settings',
 			'Main Settings',
 			array($this, 'print_section_info'), // Callback
-			'fgcal-setting-admin' // Page
+			'pgcal-setting-admin' // Page
 		);
 
 		add_settings_field(
 			'google_api',
 			'Google API',
 			array($this, 'gapi_callback'), // Callback
-			'fgcal-setting-admin', // Page
-			'fgcal-main-settings' // Section
+			'pgcal-setting-admin', // Page
+			'pgcal-main-settings' // Section
 		);
 
 		add_settings_field(
 			'use_tooltip',
 			'Use Tooltip',
 			array($this, 'tooltip_callback'),
-			'fgcal-setting-admin',
-			'fgcal-main-settings'
+			'pgcal-setting-admin',
+			'pgcal-main-settings'
 		);
 
 		add_settings_field(
 			'fixed_tz',
 			'Use a fixed timezone (experimental)',
 			array($this, 'tz_callback'),
-			'fgcal-setting-admin', // Page
-			'fgcal-main-settings' // Section
+			'pgcal-setting-admin', // Page
+			'pgcal-main-settings' // Section
 		);
 	}
 
@@ -120,7 +120,7 @@ class fgcalSettings {
 	 * Print the Section text
 	 */
 	public function print_section_info() {
-		print '<p>Shortcode Usage: [full_gcal gcal="address@group.calendar.google.com"] </p>
+		print '<p>Shortcode Usage: [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
       <p>You must have a google calendar API. See: <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>';
 	}
 
@@ -148,7 +148,7 @@ class fgcalSettings {
 	 */
 	public function gapi_callback() {
 		printf(
-			'<input type="text" id="google_api" name="fgcal_settings[google_api]" value="%s" />',
+			'<input type="text" id="google_api" name="pgcal_settings[google_api]" value="%s" />',
 			isset($this->options['google_api']) ? esc_attr($this->options['google_api']) : ''
 		);
 	}
@@ -156,7 +156,7 @@ class fgcalSettings {
 
 	public function tooltip_callback() {
 		printf(
-			'<input title="Use the popper/tooltip plugin to display event information." type="checkbox" id="use_tooltip" name="fgcal_settings[use_tooltip]" value="yes" %s />',
+			'<input title="Use the popper/tooltip plugin to display event information." type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
 			isset($this->options['use_tooltip']) ? 'checked' : ''
 		);
 	}
@@ -166,7 +166,7 @@ class fgcalSettings {
 		$tzopt = $this->options['fixed_tz'] ?? '';
 
 		printf(
-			'<select name="fgcal_settings[fixed_tz]">
+			'<select name="pgcal_settings[fixed_tz]">
                 %s
             </select>',
 			$this->create_tz_list($tzopt)

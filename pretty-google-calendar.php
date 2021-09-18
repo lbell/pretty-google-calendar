@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Full GCal
-Plugin URI: https://github.com/lbell/full-gcal
+Plugin Name: Pretty Google Calendar
+Plugin URI: https://github.com/lbell/pretty-google-calendar
 Description: Google Calendars that aren't ugly.
 Version: 1.1.0
 Author: LBell
 Author URI: http://lorenbell.com
-Text Domain: fgcal
+Text Domain: pgcal
 */
 /*  Copyright 2020 LBell
 
@@ -25,19 +25,19 @@ Text Domain: fgcal
 */
 
 
-define('FGCAL_VER', "1.1.0");
-define('FGCAL_DIR', plugin_dir_path(__FILE__)); // Trailing slash
-define('FGCAL_TEMPLATE_DIR', FGCAL_DIR . 'templates/');
-define('FGCAL_URL', plugin_dir_url(__FILE__));
+define('PGCAL_VER', "1.1.0");
+define('PGCAL_DIR', plugin_dir_path(__FILE__)); // Trailing slash
+define('PGCAL_TEMPLATE_DIR', PGCAL_DIR . 'templates/');
+define('PGCAL_URL', plugin_dir_url(__FILE__));
 
-load_plugin_textdomain('fgcal', false, FGCAL_DIR . 'languages');
+load_plugin_textdomain('pgcal', false, PGCAL_DIR . 'languages');
 
-require(FGCAL_DIR . 'util/utils.php');
+require(PGCAL_DIR . 'util/utils.php');
 
-require(FGCAL_DIR . 'admin/admin.php');
-require(FGCAL_DIR . 'init/shortcode.php');
-// require(FGCAL_DIR . 'init/admin/fgcal-settings-page.php');
-require(FGCAL_DIR . 'init/init.php');
+require(PGCAL_DIR . 'admin/admin.php');
+require(PGCAL_DIR . 'init/shortcode.php');
+// require(PGCAL_DIR . 'init/admin/pgcal-settings-page.php');
+require(PGCAL_DIR . 'init/init.php');
 
 
-require(FGCAL_DIR . 'dev/console-log.php'); // DEBUG
+require(PGCAL_DIR . 'dev/console-log.php'); // DEBUG

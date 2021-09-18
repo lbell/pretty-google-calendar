@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const calendarEl = document.getElementById("fgcalendar");
+  const calendarEl = document.getElementById("pgcalendar");
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  //   console.log(fgcalSettings); // DEBUG
+  //   console.log(pgcalSettings); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     // Pull GCal from settings.
-    googleCalendarApiKey: fgcalSettings["google_api"],
+    googleCalendarApiKey: pgcalSettings["google_api"],
     events: {
-      googleCalendarId: fgcalSettings["gcal"],
+      googleCalendarId: pgcalSettings["gcal"],
     },
 
     // Locale is untested -- proceed with caution.
-    // locale: fgcalSettings['wplocale'],
+    // locale: pgcalSettings['wplocale'],
 
     views: {
       // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // list options
     listDayFormat: { weekday: "long", month: "long", day: "numeric" },
 
-    timeZone: fgcalSettings["fixed_tz"],
+    timeZone: pgcalSettings["fixed_tz"],
     // timeZoneImpl: "UTC-coercion",
 
     headerToolbar: isMobile()
@@ -56,13 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
         },
 
     eventDidMount: function (info) {
-      if (fgcalSettings["use_tooltip"]) {
+      if (pgcalSettings["use_tooltip"]) {
         tippyRender(info);
       }
     },
 
     eventClick: function (info) {
-      if (fgcalSettings["use_tooltip"]) {
+      if (pgcalSettings["use_tooltip"]) {
         info.jsEvent.preventDefault(); // Prevent following link
       }
     },
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // TODO: may be fixed in v6
   const tzMessage =
-    fgcalSettings["fixed_tz"] === "local"
+    pgcalSettings["fixed_tz"] === "local"
       ? "(Times may be adjusted to your computer's timezone.)"
       : "(Times displayed in timezone of venue.)";
   //   document.getElementById("tz_message").innerHTML = tzMessage;

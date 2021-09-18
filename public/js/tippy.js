@@ -1,5 +1,5 @@
 function tippyRender(info) {
-  //   console.log(info); // DEBUG
+  console.log(info.event); // DEBUG
 
   //   const calID = info.event.source.internalEventSource.meta.googleCalendarId;
   //   const eventID = getEventId(info.event.url);
@@ -39,7 +39,7 @@ function tippyRender(info) {
         }
       : "",
     interactive: "true", // Allows clicking inside
-    appendTo: document.getElementById("fgcalendar"),
+    appendTo: document.getElementById("pgcalendar"),
     maxWidth: 600, // TODO: from settings
     boundary: "window",
   });

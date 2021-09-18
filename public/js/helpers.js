@@ -59,7 +59,7 @@ function mapify(text) {
  */
 function linkify(url) {
   if (url) {
-    return `<a class="button" href="${url}" target="_blank">Add</a>`;
+    return `<a class="button" href="${url}" target="_blank">Add to Google Calendar</a>`;
   }
 }
 
