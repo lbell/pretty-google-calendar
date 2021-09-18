@@ -1,9 +1,5 @@
 function tippyRender(info) {
-  console.log(info.event); // DEBUG
-
-  //   const calID = info.event.source.internalEventSource.meta.googleCalendarId;
-  //   const eventID = getEventId(info.event.url);
-  //   const isMobile = window.innerWidth <= 768;
+  // console.log(info.event); // DEBUG
 
   const timeString = info.event.allDay
     ? `${info.event.start.toDateString()}, All Day`
@@ -12,10 +8,8 @@ function tippyRender(info) {
   let toolContent = `
 		<h2> ${info.event.title} </h2>
 		<p> ${timeString}</p>`;
-  // toolContent += breakify(urlify(info.event.extendedProps.description));
   toolContent += breakify(info.event.extendedProps.description);
 
-  // toolContent += `<div class="toolloc">${mapify(info.event.extendedProps.location)} ${linkify(gcalLink(eventID, calID))}</div>`;
   toolContent += `<div class="toolloc">${mapify(info.event.extendedProps.location)} ${linkify(info.event.url)}</div>`;
 
   tippy(info.el, {

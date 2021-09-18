@@ -33,11 +33,8 @@ define('PGCAL_URL', plugin_dir_url(__FILE__));
 load_plugin_textdomain('pgcal', false, PGCAL_DIR . 'languages');
 
 require(PGCAL_DIR . 'util/utils.php');
-
 require(PGCAL_DIR . 'admin/admin.php');
 require(PGCAL_DIR . 'init/shortcode.php');
-// require(PGCAL_DIR . 'init/admin/pgcal-settings-page.php');
 require(PGCAL_DIR . 'init/init.php');
-
 
 require(PGCAL_DIR . 'dev/console-log.php'); // DEBUG

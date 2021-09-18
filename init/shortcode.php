@@ -13,17 +13,9 @@ function pgcal_shortcode($atts) {
 
 	// Add the attributes from the shortcode OVERRIDING the stored settings
 	$pgcalSettings = array_merge($pgcalSettings, $args);
-	$pgcalSettings['wplocale'] = stdLocale(get_locale());
-
-	// $pgcalSettings['wptzstring'] = get_option('timezone_string');
-	// $pgcalSettings['wptzoffset'] = get_option('gmt_offset');
 
 	// Load Scripts
-	// Full Calendar
 	wp_enqueue_script('fullcalendar');
-	// wp_enqueue_script('fc_locales');
-
-	// Popper / Tippy
 	if (isset($pgcalSettings['use_tooltip'])) {
 		wp_enqueue_script('popper');
 		wp_enqueue_script('tippy');

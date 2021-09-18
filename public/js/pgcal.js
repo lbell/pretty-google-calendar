@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
       googleCalendarId: pgcalSettings["gcal"],
     },
 
-    // Locale is untested -- proceed with caution.
-    // locale: pgcalSettings['wplocale'],
-
     views: {
       // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
       dayGrid: {
@@ -40,8 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // list options
     listDayFormat: { weekday: "long", month: "long", day: "numeric" },
 
-    timeZone: pgcalSettings["fixed_tz"],
-    // timeZoneImpl: "UTC-coercion",
+    timeZone: pgcalSettings["fixed_tz"], // TODO: Necessary?
 
     headerToolbar: isMobile()
       ? {
@@ -81,16 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     },
-
-    // displayEventTime: true, // don't show the time column in list view
   });
 
   calendar.render();
-
-  // TODO: may be fixed in v6
-  const tzMessage =
-    pgcalSettings["fixed_tz"] === "local"
-      ? "(Times may be adjusted to your computer's timezone.)"
-      : "(Times displayed in timezone of venue.)";
-  //   document.getElementById("tz_message").innerHTML = tzMessage;
 });
