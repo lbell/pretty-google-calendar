@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Pretty Google Calendar TEST
+Plugin Name: Pretty Google Calendar
 Plugin URI: https://github.com/lbell/pretty-google-calendar
 Description: Google Calendars that aren't ugly.
 Version: 1.1.0
