@@ -65,25 +65,25 @@ Obtain your Google Calendar’s ID:
 
 1. Pretty Google Calendar.
 
-   <img src="assets/pretty-google-calendar.png" height="400" />
+   <img src="assets/screenshot-1.png" height="400" />
 &nbsp;
 &nbsp;
 
 2. List View.
 
-   <img src="assets/list-view.png" height="400" />
+   <img src="assets/screenshot-2.png" height="400" />
 &nbsp;
 &nbsp;
 
 3. Optional Event Popover.
 
-   <img src="assets/event-popover.png" height="400" />
+   <img src="assets/screenshot-3.png" height="400" />
 &nbsp;
 &nbsp;
 
 4. Settings page. It's that simple.
 
-   <img src="assets/settings.png" height="200" />
+   <img src="assets/screenshot-4.png" height="200" />
 &nbsp;
 &nbsp;
 
