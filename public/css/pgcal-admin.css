@@ -1,0 +1,54 @@
+.pgcal-settings-header {
+  display: flex;
+  align-items: center;
+}
+
+.pgcal-settings-header .pgcal-logo {
+  float: left;
+  margin-left: -15px;
+}
+
+.pgcal-settings-header h1 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.settings_page_pgcal-setting-admin button a {
+  text-decoration: none;
+}
+
+.settings_page_pgcal-setting-admin button a {
+  color: black;
+}
+
+.settings_page_pgcal-setting-admin button a:hover {
+  color: white;
+}
+
+.settings_page_pgcal-setting-admin button {
+  background-color: #68c5ed;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.settings_page_pgcal-setting-admin button {
+  background-color: white;
+  color: black;
+  border: 2px solid #68c5ed;
+}
+
+.settings_page_pgcal-setting-admin button:hover {
+  background-color: #68c5ed;
+  color: white;
+}
+
+.settings_page_pgcal-setting-admin button a {
+  text-decoration: none;
+}

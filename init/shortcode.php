@@ -39,6 +39,6 @@ function pgcal_shortcode($atts) {
 
 	return "
       <div id='pgcalendar'>loading...</div>
-      <div id='tz_message' style='color: grey;'></div>
+      <div class='pgcal-branding'>Powered by <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
     ";
 }

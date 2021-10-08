@@ -16,3 +16,9 @@
 .fc-event-title {
   white-space: normal;
 }
+
+.pgcal-branding {
+  color: grey;
+  font-size: 70%;
+  float: right;
+}
