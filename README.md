@@ -13,9 +13,9 @@ Embedded Google Calendars that don't suck.
 
 ## Description
 
-You: I just want to embed a Google Calendar in my website. \
-Google: Here's a special kind of ugly! \
-Pretty Google Calendar: I got this.
+**You:** I just want to embed a Google Calendar in my website. \
+**Google:** Here's a special kind of ugly! \
+**Pretty Google Calendar:** I got this.
 
 This is a light and simple to use plugin that embed Google Calendars in your website with style, beauty and grace.
 
@@ -91,11 +91,11 @@ Obtain your Google Calendar’s ID:
 
 ### What sorcery is this?!
 
-Pretty Google Calendar impliments the excellent [Full Calendar](https://fullcalendar.io/) for you, taking all the pain and anquish away.
+Pretty Google Calendar impliments the excellent [Full Calendar](https://fullcalendar.io/) for you, and tosses in a little [Tippy.js](https://atomiks.github.io/tippyjs/) and [Popper](https://popper.js.org/) to make things... well... pop.
 
 ### Can I use this to manage a calendar?
 
-Not directly. All calendar events are maintaned via Google Calendar, this plugin just displays them in a non shitty way.
+No. All calendar events are maintaned via Google Calendar, this plugin just displays them in a non-shitty way.
 
 ### How do I theme the calendar?
 
@@ -105,9 +105,9 @@ Add custom css to your theme to tweak to your desire.
 
 Probably not. But it maybe could!
 
-Pretty Google Caledar is purposefully simple and easy, and set up with a few defaults to make things just work. However, there may be a killer feature you want that others are clammering for.
+Pretty Google Calendar is purposefully simple and easy, set up with a few defaults to make things just work. However, there may be a killer feature you want that others are clammering for.
 
-Since it is based on Full Calendar, theoretically, anything that is possible there, is possible here Contact me for requests for additional functionality, and let's see what we can create together!
+Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
 
