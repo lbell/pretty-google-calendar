@@ -65,7 +65,7 @@ Obtain your Google Calendar’s ID:
 
 1. Pretty Google Calendar.
 
-   <img src="assets/list-view.png" height="400" />
+   <img src="assets/pretty-google-calendar.png" height="400" />
 &nbsp;
 &nbsp;
 
