@@ -15,15 +15,16 @@ Embedded Google Calendars that don't suck.
 
 You: I just want to embed a Google Calendar in my website. \
 Google: Here's a special kind of ugly! \
-This Plugin: I got this.
+Pretty Google Calendar: I got this.
+
+This is a light and simple to use plugin that embed Google Calendars in your website with style, beauty and grace.
 
 How it works:
 
-1. Add a shortcode to your page.
 1. Continue to manage events using Google Calendar as you've always done.
+1. Add a shortcode to your page.
+1. Sigh with relief.
 1. That's it.
-
-This is a light and simple to use plugin that embed Google Calendars in your website with style, beauty and grace.
 
 ## Installation
 
@@ -62,39 +63,37 @@ Obtain your Google Calendar’s ID:
 
 ## Screenshots
 
-1. Included "list" style.
+1. Pretty Google Calendar.
 
-   <img src="assets/screenshot-1.jpg" height="400" />
+   <img src="assets/list-view.png" height="400" />
 &nbsp;
 &nbsp;
 
-2. Included "card" style.
+2. List View.
 
-   <img src="assets/screenshot-2.jpg" height="400" />
+   <img src="assets/list-view.png" height="400" />
 &nbsp;
 &nbsp;
 
-3. Included "text" style.
+3. Optional Event Popover.
 
-   <img src="assets/screenshot-3.png" height="200" />
+   <img src="assets/event-popover.png" height="400" />
 &nbsp;
 &nbsp;
 
-4. Custom avatar style.
+4. Settings page. It's that simple.
 
-   <img src="assets/screenshot-4.jpg" height="400" />
-&nbsp;
-&nbsp;
-
-5. Settings page (There isn't one. It's that simple.)
-
-   <img src="assets/screenshot-5.jpg" height="100" />
+   <img src="assets/settings.png" height="200" />
 &nbsp;
 &nbsp;
 
 ## Frequently Asked Questions
 
-### Can I use this manage a calendar?
+### What sorcery is this?!
+
+Pretty Google Calendar impliments the excellent [Full Calendar](https://fullcalendar.io/) for you, taking all the pain and anquish away.
+
+### Can I use this to manage a calendar?
 
 Not directly. All calendar events are maintaned via Google Calendar, this plugin just displays them in a non shitty way.
 
@@ -106,9 +105,9 @@ Add custom css to your theme to tweak to your desire.
 
 Probably not. But it maybe could!
 
-Pretty Google Caledar is purposefully simple and easy, and set up with a few defaults to make things just work. However,
-there may be a killer feature you want that others are clammering for. Contact me for requests for additional functionality,
-and let's see what we can create together!
+Pretty Google Caledar is purposefully simple and easy, and set up with a few defaults to make things just work. However, there may be a killer feature you want that others are clammering for.
+
+Since it is based on Full Calendar, theoretically, anything that is possible there, is possible here Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
 
