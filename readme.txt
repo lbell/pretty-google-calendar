@@ -13,8 +13,8 @@ Embedded Google Calendars that don't suck.
 
 == Description ==
 
-**You:** I just want to embed a Google Calendar in my WordPress site. \
-**Google:** Here's a special kind of ugly! \
+**You:** I just want to embed a Google Calendar in my WordPress site.
+**Google:** Here's a special kind of ugly!
 **Pretty Google Calendar:** I got this.
 
 This is a light and simple to use plugin that embed Google Calendars in your website with style, beauty and grace.

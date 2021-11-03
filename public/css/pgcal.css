@@ -12,6 +12,12 @@
   display: block;
 }
 
+/* Remove <a underlining for day and day of week */
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+  text-decoration: none !important;
+}
+
 /* Allows wrapping of titles */
 .fc-event-title {
   white-space: normal;
