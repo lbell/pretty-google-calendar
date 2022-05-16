@@ -55,7 +55,7 @@ across months.
 `custom_days="28"` \
 Sets the number of days to show in the list tab. Defaults to 28. Only used with listCustom.
 
-`custom_list_button="list"`
+`custom_list_button="list"` \
 Sets the label for the listCustom button. Defaults to "list".
 
 ### Obtaining Google Calendar API Key
