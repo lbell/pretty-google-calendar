@@ -33,14 +33,14 @@ This is a light and simple to use plugin that embeds Google Calendars in your we
 1. Obtain your Google Calendar API key (see below)
 1. Use the shortcode `[pretty_google_calendar gcal=calendarID@group.calendar.google.com]` directly in your page or post content.
 
-** Shortcode Options **
+**Shortcode Options**
 
 There is currently one shortcode option:
 
 list_days="28" - Sets the number of days to show in the list tab. Defaults to 28.
 locale="en" - Sets the locale for calendar. Defaults to "en".
 
-** Obtaining Google Calendar API Key **
+**Obtaining Google Calendar API Key**
 
 1. Go to the Google Developer Console and create a new project (it might take a second).
 1. Once in the project, go to **APIs & auth > APIs** on the sidebar.
