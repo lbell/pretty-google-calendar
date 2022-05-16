@@ -35,8 +35,8 @@ How it works:
 
 ### Shortcode Options
 
-list_days="28" Sets the number of days to show in the list tab. Defaults to 28.
-locale="en" Sets the locale for calendar. Defaults to "en".
+`list_days="28"` Sets the number of days to show in the list tab. Defaults to 28. \
+`locale="en"` Sets the locale for calendar. Defaults to "en".
 
 ### Obtaining Google Calendar API Key
 
