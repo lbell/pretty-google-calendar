@@ -8,6 +8,7 @@ function pgcal_shortcode($atts) {
 		array(
 			'gcal'          => "",
 			'list_days'     => "28",
+			'locale'        => "en",
 		),
 		$atts
 	);

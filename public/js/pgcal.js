@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  //   console.log(pgcalSettings); // DEBUG
+  console.log(pgcalSettings); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
+    locale: pgcalSettings["locale"],
     // Pull GCal from settings.
     googleCalendarApiKey: pgcalSettings["google_api"],
     events: {

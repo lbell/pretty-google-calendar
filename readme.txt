@@ -5,7 +5,7 @@ Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty
 Requires at least: 3.0
 Tested up to: 5.9.3
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,14 +33,14 @@ This is a light and simple to use plugin that embeds Google Calendars in your we
 1. Obtain your Google Calendar API key (see below)
 1. Use the shortcode `[pretty_google_calendar gcal=calendarID@group.calendar.google.com]` directly in your page or post content.
 
-=== Shortcode Options ===
+** Shortcode Options **
 
 There is currently one shortcode option:
 
-list_days="28"
-Sets the number of days to show in the list tab. Defaults to 28.
+list_days="28" - Sets the number of days to show in the list tab. Defaults to 28.
+locale="en" - Sets the locale for calendar. Defaults to "en".
 
-=== Obtaining Google Calendar API Key ===
+** Obtaining Google Calendar API Key **
 
 1. Go to the Google Developer Console and create a new project (it might take a second).
 1. Once in the project, go to **APIs & auth > APIs** on the sidebar.
@@ -98,6 +98,11 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 == Changelog ==
+
+= 1.3.0 =
+
+- Added: locale support (incomplete)
+
 = 1.2.0 =
 
 - Added: disable link option
