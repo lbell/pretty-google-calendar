@@ -6,9 +6,11 @@ function pgcal_shortcode($atts) {
 
 	$args = shortcode_atts(
 		array(
-			'gcal'          => "",
-			'list_days'     => "28",
-			'locale'        => "en",
+			'gcal'                => "",
+			'locale'              => "en",
+			'list_type'           => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
+			'custom_list_button'  => "list",
+			'custom_days'         => "28",
 		),
 		$atts
 	);

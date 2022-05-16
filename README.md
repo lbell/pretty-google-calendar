@@ -19,6 +19,12 @@ Embedded Google Calendars that don't suck.
 
 This is a light and simple to use plugin that embeds Google Calendars in your website with style, beauty and grace.
 
+Highlights:
+
+- Out of the box support for Calendar grid and agenda list view
+- Responsive design switches to list view on smaller screens
+- List view customizable to day, week, month, year or custom number of days
+
 How it works:
 
 1. Continue to manage events using Google Calendar as you've always done.
@@ -35,8 +41,22 @@ How it works:
 
 ### Shortcode Options
 
-`list_days="28"` Sets the number of days to show in the list tab. Defaults to 28. \
-`locale="en"` Sets the locale for calendar. Defaults to "en".
+`locale="en"` \
+Sets the locale for calendar. Defaults to "en".
+
+`list_type="listDay"`\
+Sets the list type. Options: listDay, listWeek, listMonth, listYear, and listCustom\* (also accepts day, week, month year, custom) \
+Defaults to `listCustom` for backward compatibility.
+
+Note: listCustom allows you to set te number of days you want to display from the current date. Whereas listMonth shows
+all the events from this month (including past events), `list_type="custom" custom_days="28"` will show the next 28 days
+across months.
+
+`custom_days="28"`
+Sets the number of days to show in the list tab. Defaults to 28. Only used with listCustom.
+
+`custom_list_button="list"`
+Sets the label for the listCustom button. Defaults to "list".
 
 ### Obtaining Google Calendar API Key
 
@@ -118,7 +138,9 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ### 1.3.0
 
-- Added: locale support (incomplete)
+- Added: list type switcher
+- Added: custom list button label
+- Added: locale support
 
 ### 1.2.0
 

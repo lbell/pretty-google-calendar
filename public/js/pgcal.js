@@ -3,7 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  //   console.log(pgcalSettings); // DEBUG
+  console.log(pgcalSettings); // DEBUG
+
+  function getItemByFuzzyValue(array, value) {
+    return array.find((item) => item.toLowerCase().includes(value.toLowerCase()));
+  }
+  const listArray = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
+  const listType = getItemByFuzzyValue(listArray, pgcalSettings["list_type"]);
+  console.log(listType); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     locale: pgcalSettings["locale"],
@@ -22,11 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
           meridiem: "short",
         },
       },
-      // Custom View
-      daysListCustom: {
+      //   Custom View
+      listCustom: {
         type: "list",
-        duration: { days: parseInt(pgcalSettings["list_days"]) },
-        buttonText: "list",
+        duration: { days: parseInt(pgcalSettings["custom_days"]) },
+        buttonText: pgcalSettings["custom_list_button"],
       },
     },
 
@@ -44,12 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
       ? {
           left: "prev,next today",
           center: "",
-          right: "dayGridMonth,daysListCustom",
+          right: `dayGridMonth,${listType}`,
         }
       : {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,daysListCustom",
+          right: `dayGridMonth,${listType}`,
         },
 
     eventDidMount: function (info) {
@@ -64,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
 
-    initialView: pgcal_is_mobile() ? "daysListCustom" : "dayGridMonth",
+    initialView: pgcal_is_mobile() ? listType : "dayGridMonth",
 
     // Change view on window resize
     windowResize: function (view) {
@@ -72,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // so only fire if width has changed.
       if (window.innerWidth !== width) {
         if (pgcal_is_mobile()) {
-          calendar.changeView("daysListCustom");
+          calendar.changeView(listType);
         } else {
           calendar.changeView("dayGridMonth");
         }

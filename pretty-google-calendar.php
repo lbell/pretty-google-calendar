@@ -25,7 +25,7 @@ Text Domain: pgcal
 */
 
 
-define('PGCAL_VER', "1.1.0");
+define('PGCAL_VER', "1.3.0");
 define('PGCAL_DIR', plugin_dir_path(__FILE__)); // Trailing slash
 define('PGCAL_TEMPLATE_DIR', PGCAL_DIR . 'templates/');
 define('PGCAL_URL', plugin_dir_url(__FILE__));
