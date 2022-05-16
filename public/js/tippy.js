@@ -1,6 +1,5 @@
 function pgcal_tippyRender(info) {
-  console.log(info.event); // DEBUG
-  console.log(info.event.startStr); // DEBUG
+  //   console.log(info.event); // DEBUG
 
   const timeString = info.event.allDay ? "All Day" : new Date(info.event.startStr).toLocaleTimeString();
 

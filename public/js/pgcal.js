@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  console.log(pgcalSettings); // DEBUG
+  //   console.log(pgcalSettings); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     // Pull GCal from settings.
