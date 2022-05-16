@@ -5,7 +5,7 @@
 **Tags:** calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty \
 **Requires at least:** 3.0 \
 **Tested up to:** 5.9.3 \
-**Stable tag:** 1.3.0 \
+**Stable tag:** 1.3.1 \
 **License:** GPLv2 or later \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,10 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
+
+### 1.3.1
+
+- Version bump for WP's awkward versioning system
 
 ### 1.3.0
 
