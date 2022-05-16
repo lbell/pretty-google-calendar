@@ -3,7 +3,7 @@
 Plugin Name: Pretty Google Calendar
 Plugin URI: https://github.com/lbell/pretty-google-calendar
 Description: Google Calendars that aren't ugly.
-Version: 1.1.0
+Version: 1.3.0
 Author: LBell
 Author URI: http://lorenbell.com
 Text Domain: pgcal

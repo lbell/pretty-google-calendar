@@ -18,6 +18,7 @@ function pgcal_shortcode($atts) {
 
 	// Load Scripts
 	wp_enqueue_script('fullcalendar');
+	wp_enqueue_script('fc_locales');
 	if (isset($pgcalSettings['use_tooltip'])) {
 		wp_enqueue_script('popper');
 		wp_enqueue_script('tippy');

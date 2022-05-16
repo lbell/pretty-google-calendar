@@ -32,10 +32,12 @@ function pgcal_register_frontend_css() {
 function pgcal_register_frontend_js() {
 	// 3rd Party
 	// wp_register_script('fullcalendar', 'https://cdn.jsdelivr.net/npm/fullcalendar@5/main.js', null, PGCAL_VER, true); 
-	wp_register_script('fullcalendar', PGCAL_URL . 'public/lib/fullcalendar/main.min.js', null, PGCAL_VER, true);
 	// wp_register_script('popper', 'https://unpkg.com/@popperjs/core@2', null, PGCAL_VER, true);
-	wp_register_script('popper', PGCAL_URL . 'public/lib/popper/popper.min.js', null, PGCAL_VER, true);
 	// wp_register_script('tippy', 'https://unpkg.com/tippy.js@6', null, PGCAL_VER, true);
+
+	wp_register_script('fullcalendar', PGCAL_URL . 'public/lib/fullcalendar/main.min.js', null, PGCAL_VER, true);
+	wp_register_script('fc_locales', PGCAL_URL . 'public/lib/fullcalendar/locales-all.min.js', null, PGCAL_VER, true);
+	wp_register_script('popper', PGCAL_URL . 'public/lib/popper/popper.min.js', null, PGCAL_VER, true);
 	wp_register_script('tippy', PGCAL_URL . 'public/lib/tippy/tippy.min.js', null, PGCAL_VER, true);
 
 	// Local
