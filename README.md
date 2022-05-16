@@ -4,8 +4,8 @@
 **Donate link:** https://github.com/sponsors/lbell \
 **Tags:** calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty \
 **Requires at least:** 3.0 \
-**Tested up to:** 5.8.1 \
-**Stable tag:** 1.1.0 \
+**Tested up to:** 5.9.3 \
+**Stable tag:** 1.2.0 \
 **License:** GPLv2 or later \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Embedded Google Calendars that don't suck.
 **Google:** Here's a special kind of ugly! \
 **Pretty Google Calendar:** I got this.
 
-This is a light and simple to use plugin that embed Google Calendars in your website with style, beauty and grace.
+This is a light and simple to use plugin that embeds Google Calendars in your website with style, beauty and grace.
 
 How it works:
 
@@ -33,7 +33,14 @@ How it works:
 1. Obtain your Google Calendar API key (see below)
 1. Use the shortcode `[pretty_google_calendar gcal=calendarID@group.calendar.google.com]` directly in your page or post content.
 
-## Obtaining Google Calendar API Key
+### Shortcode Options
+
+There is currently one shortcode option:
+
+list_days = "28"
+Sets the number of days to show in the list tab. Defaults to 28.
+
+### Obtaining Google Calendar API Key
 
 1. Go to the Google Developer Console and create a new project (it might take a second).
 1. Once in the project, go to **APIs & auth > APIs** on the sidebar.
@@ -110,6 +117,14 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
+
+### 1.2.0
+
+- Added: disable link option
+- Added: "list_days" shortcode option
+- Fixed: timezone on tooltip
+- FullCalendar update to v5.11.0
+- Tested to WordPress 5.9.3
 
 ### 1.1.0
 

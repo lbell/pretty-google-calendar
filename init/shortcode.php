@@ -6,7 +6,8 @@ function pgcal_shortcode($atts) {
 
 	$args = shortcode_atts(
 		array(
-			'gcal'     => "",
+			'gcal'          => "",
+			'list_days'     => "28",
 		),
 		$atts
 	);

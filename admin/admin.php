@@ -97,6 +97,14 @@ class pgcalSettings {
 			'pgcal-setting-admin',
 			'pgcal-main-settings'
 		);
+
+		add_settings_field(
+			'no_link',
+			'Disable Event Link',
+			array($this, 'pgcal_no_link_callback'),
+			'pgcal-setting-admin',
+			'pgcal-main-settings'
+		);
 	}
 
 	/**
@@ -112,6 +120,9 @@ class pgcalSettings {
 
 		if (isset($input['use_tooltip']))
 			$sanitized_input['use_tooltip'] = sanitize_text_field($input['use_tooltip']);
+
+		if (isset($input['no_link']))
+			$sanitized_input['no_link'] = sanitize_text_field($input['no_link']);
 
 		return $sanitized_input;
 	}
@@ -137,11 +148,17 @@ class pgcalSettings {
 		);
 	}
 
-
 	public function pgcal_tooltip_callback() {
 		printf(
 			'<input title="Use the popper/tooltip plugin to display event information." type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
 			isset($this->options['use_tooltip']) ? 'checked' : ''
+		);
+	}
+
+	public function pgcal_no_link_callback() {
+		printf(
+			'<input title="Disable the link to the event on the calendar." type="checkbox" id="no_link" name="pgcal_settings[no_link]" value="yes" %s />',
+			isset($this->options['no_link']) ? 'checked' : ''
 		);
 	}
 }

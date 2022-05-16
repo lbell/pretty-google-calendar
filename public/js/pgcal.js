@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  // console.log(pgcalSettings); // DEBUG
+  console.log(pgcalSettings); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     // Pull GCal from settings.
@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       },
       // Custom View
-      listFourWeeks: {
+      daysListCustom: {
         type: "list",
-        duration: { days: 28 },
+        duration: { days: parseInt(pgcalSettings["list_days"]) },
         buttonText: "list",
       },
     },
@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
       ? {
           left: "prev,next today",
           center: "",
-          right: "dayGridMonth,listFourWeeks",
+          right: "dayGridMonth,daysListCustom",
         }
       : {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,listFourWeeks",
+          right: "dayGridMonth,daysListCustom",
         },
 
     eventDidMount: function (info) {
@@ -58,12 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     eventClick: function (info) {
-      if (pgcalSettings["use_tooltip"]) {
+      if (pgcalSettings["use_tooltip"] || pgcalSettings["no_link"]) {
         info.jsEvent.preventDefault(); // Prevent following link
       }
     },
 
-    initialView: pgcal_is_mobile() ? "listFourWeeks" : "dayGridMonth",
+    initialView: pgcal_is_mobile() ? "daysListCustom" : "dayGridMonth",
 
     // Change view on window resize
     windowResize: function (view) {
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // so only fire if width has changed.
       if (window.innerWidth !== width) {
         if (pgcal_is_mobile()) {
-          calendar.changeView("listFourWeeks");
+          calendar.changeView("daysListCustom");
         } else {
           calendar.changeView("dayGridMonth");
         }
