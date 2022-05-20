@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  console.log(pgcalSettings); // DEBUG
+  //   console.log(pgcalSettings); // DEBUG
 
   function getItemByFuzzyValue(array, value) {
     return array.find((item) => item.toLowerCase().includes(value.toLowerCase()));
   }
   const listArray = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
   const listType = getItemByFuzzyValue(listArray, pgcalSettings["list_type"]);
-  console.log(listType); // DEBUG
+  //   console.log(listType); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     locale: pgcalSettings["locale"],

@@ -4,9 +4,14 @@ function pgcal_shortcode($atts) {
 	$default = array();
 	$pgcalSettings = get_option('pgcal_settings', $default);
 
+	// v2.0.0 - pull locale from worpdress settings
+	// $locale = get_locale() ? get_locale() : 'en';
+	// $locale = ($locale === 'en_US') ? 'en' : $locale;
+
 	$args = shortcode_atts(
 		array(
 			'gcal'                => "",
+			// 'locale'              => $locale,
 			'locale'              => "en",
 			'list_type'           => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
 			'custom_list_button'  => "list",
