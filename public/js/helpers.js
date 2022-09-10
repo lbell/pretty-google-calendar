@@ -1,3 +1,77 @@
+
+/**
+ * Computes all variables related to views
+ *
+ * @param {array} settings Settings received from the shortcode parameters
+ * @returns object
+ */
+const pgcal_resolve_views = (settings) => {
+  const gridViews = ["dayGridMonth"]
+  const listViews = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
+  const allowedViews = [...listViews, ...gridViews]
+
+  const wantsToEnforceListviewOnMobile = pgcal_is_truthy(
+    settings["enforce_listview_on_mobile"]
+  )
+
+  let initialView = 'dayGridMonth'
+
+  if (allowedViews.includes(settings['initial_view'])) {
+    initialView = settings['initial_view']
+  }
+
+  const viewsArray = pgcal_csv_to_array(settings["views"])
+  const viewsIncludesList = pgcal_get_item_by_fuzzy_value(viewsArray, 'list')
+  const listType = pgcal_get_item_by_fuzzy_value(viewsArray, settings["list_type"]);
+
+  if (pgcal_is_mobile() && wantsToEnforceListviewOnMobile) {
+    initialView = listType
+  }
+
+  const views = {
+    all: viewsArray,
+    length: viewsArray.length,
+    hasList: !!viewsIncludesList,
+    listType,
+    initial: initialView,
+    wantsToEnforceListviewOnMobile,
+  }
+
+  return views
+}
+
+/**
+ * Tests if the given array has the value in any part of each item
+ *
+ * @param {string} csv Array to be tested
+ * @returns array
+ */
+const pgcal_csv_to_array = (csv) => csv
+  .split(',')
+  .map(view => view.trim())
+
+/**
+ * Tests if the given array has the value in any part of each item
+ *
+ * @param {array} array Array to be tested
+ * @param {string} value String to be checked
+ * @returns boolean
+ */
+const pgcal_get_item_by_fuzzy_value = (array, value) => array.find(
+  item => item.toLowerCase().includes(value.toLowerCase())
+)
+
+/**
+ * Tests if a value is truthy
+ *
+ * @param {string} value String to be tested
+ * @returns boolean
+ */
+function pgcal_is_truthy(value) {
+  const lowercaseValue = (typeof value === 'string') ? value.toLowerCase() : value
+  return ['true', '1', true, 1].includes(lowercaseValue);
+}
+
 /**
  * Tests whether the window size is equal to or less than 768... an arbitrary
  * standard for what is mobile...
