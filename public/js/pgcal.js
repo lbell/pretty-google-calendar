@@ -10,6 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // console.log(':: views')
   // console.table(views)
 
+  const toolbarLeft = pgcal_is_truthy(pgcalSettings["show_today_button"])
+    ? "prev,next today"
+    : "prev,next"
+  const toolbarCenter = pgcal_is_truthy(pgcalSettings["show_title"])
+    ? "title"
+    : ""
+  const toolbarRight = views.length > 1
+    ? views.all.join(',')
+    : ""
+
   let selectedView = views.initial
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
