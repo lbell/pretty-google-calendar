@@ -10,17 +10,17 @@ function pgcal_shortcode($atts) {
 
 	$args = shortcode_atts(
 		array(
-			'gcal'                => "",
-			// 'locale'              => $locale,
-			'locale'              => "en",
-			'list_type'           => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
-			'custom_list_button'  => "list",
-			'custom_days'         => "28",
-			'views' => 'dayGridMonth, listCustom',
-			'initial_view' => 'dayGridMonth',
-			'enforce_listview_on_mobile' => 'true',
-			'show_today_button' => 'true',
-			'show_title' => 'true',
+			'gcal'                       => "",
+			// 'locale'                     => $locale,
+			'locale'                     => "en",
+			'list_type'                  => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
+			'custom_list_button'         => "list",
+			'custom_days'                => "28",
+			'views'                      => "dayGridMonth, listCustom",
+			'initial_view'               => "dayGridMonth",
+			'enforce_listview_on_mobile' => "true",
+			'show_today_button'          => "true",
+			'show_title'                 => "true",
 		),
 		$atts
 	);

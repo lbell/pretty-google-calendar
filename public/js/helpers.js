@@ -6,26 +6,26 @@
  * @returns object
  */
 const pgcal_resolve_views = (settings) => {
-  const gridViews = ["dayGridMonth"]
+  const gridViews = ["dayGridMonth"];
   const listViews = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
-  const allowedViews = [...listViews, ...gridViews]
+  const allowedViews = [...listViews, ...gridViews];
 
   const wantsToEnforceListviewOnMobile = pgcal_is_truthy(
     settings["enforce_listview_on_mobile"]
-  )
+  );
 
-  let initialView = 'dayGridMonth'
+  let initialView = "dayGridMonth";
 
-  if (allowedViews.includes(settings['initial_view'])) {
-    initialView = settings['initial_view']
+  if (allowedViews.includes(settings["initial_view"])) {
+    initialView = settings["initial_view"];
   }
 
-  const viewsArray = pgcal_csv_to_array(settings["views"])
-  const viewsIncludesList = pgcal_get_item_by_fuzzy_value(viewsArray, 'list')
+  const viewsArray = pgcal_csv_to_array(settings["views"]);
+  const viewsIncludesList = pgcal_get_item_by_fuzzy_value(viewsArray, "list");
   const listType = pgcal_get_item_by_fuzzy_value(viewsArray, settings["list_type"]);
 
   if (pgcal_is_mobile() && wantsToEnforceListviewOnMobile) {
-    initialView = listType
+    initialView = listType;
   }
 
   const views = {
@@ -35,9 +35,9 @@ const pgcal_resolve_views = (settings) => {
     listType,
     initial: initialView,
     wantsToEnforceListviewOnMobile,
-  }
+  };
 
-  return views
+  return views;
 }
 
 /**
@@ -47,8 +47,8 @@ const pgcal_resolve_views = (settings) => {
  * @returns array
  */
 const pgcal_csv_to_array = (csv) => csv
-  .split(',')
-  .map(view => view.trim())
+  .split(",")
+  .map(view => view.trim());
 
 /**
  * Tests if the given array has the value in any part of each item
@@ -59,7 +59,7 @@ const pgcal_csv_to_array = (csv) => csv
  */
 const pgcal_get_item_by_fuzzy_value = (array, value) => array.find(
   item => item.toLowerCase().includes(value.toLowerCase())
-)
+);
 
 /**
  * Tests if a value is truthy
@@ -68,8 +68,8 @@ const pgcal_get_item_by_fuzzy_value = (array, value) => array.find(
  * @returns boolean
  */
 function pgcal_is_truthy(value) {
-  const lowercaseValue = (typeof value === 'string') ? value.toLowerCase() : value
-  return ['true', '1', true, 1].includes(lowercaseValue);
+  const lowercaseValue = (typeof value === "string") ? value.toLowerCase() : value;
+  return ["true", "1", true, 1].includes(lowercaseValue);
 }
 
 /**
