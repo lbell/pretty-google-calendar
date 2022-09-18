@@ -46,9 +46,8 @@ function pgcal_shortcode($atts) {
 	// Pass PHP data to script(s)
 	wp_localize_script('pgcal_loader', 'pgcalSettings', $pgcalSettings);
 
-
-	return "
-      <div id='pgcalendar'>loading...</div>
-      <div class='pgcal-branding'>Powered by <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
+    return "
+      <div id='pgcalendar'>" . esc_html__("loading...", "pgcal") . "</div>
+      <div class='pgcal-branding'>" . esc_html__("Powered by", "pgcal") . " <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
     ";
 }
