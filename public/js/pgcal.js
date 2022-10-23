@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const views = pgcal_resolve_views(pgcalSettings);
   const cals = pgcal_resolve_cals(pgcalSettings);
 
-  // console.log(':: pgcalSettings')
-  // console.table(pgcalSettings)
-  // console.log(':: views')
-  // console.table(views)
+  //   console.log(":: pgcalSettings");
+  //   console.table(pgcalSettings);
+  //   console.log(":: views");
+  //   console.table(views);
 
   const toolbarLeft = pgcal_is_truthy(pgcalSettings["show_today_button"]) ? "prev,next today" : "prev,next";
   const toolbarCenter = pgcal_is_truthy(pgcalSettings["show_title"]) ? "title" : "";
@@ -82,11 +82,10 @@ document.addEventListener("DOMContentLoaded", function () {
       // so only fire if width has changed.
       if (window.innerWidth !== width && views.hasList && views.wantsToEnforceListviewOnMobile) {
         if (pgcal_is_mobile()) {
-          selectedView = calendar.view.type;
-          return calendar.changeView(views.listType);
+          calendar.changeView(views.listType);
+        } else {
+          calendar.changeView(selectedView);
         }
-
-        return calendar.changeView(selectedView);
       }
     },
   });

@@ -51,8 +51,7 @@ Sets the locale for calendar. Defaults to "en".
 Sets the list type. Options: `listDay`, `listWeek`, `listMonth`, `listYear`, and `listCustom`. (Also accepts day, week, month, year, and custom).
 Defaults to `listCustom` for backward compatibility.
 
-Note: `listCustom` allows you to set the number of days you want to display from the current date. Whereas listMonth shows
-all the events from this month (including past events), `list_type="custom" custom_days="28"` will show the next 28 days
+Note: `listCustom` allows you to set the number of days you want to display from the current date. Whereas listMonth shows all the events from this month (including past events), `list_type="custom" custom_days="28"` will show the next 28 days
 across months.
 
 `custom_days="28"` \
