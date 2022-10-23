@@ -58,6 +58,21 @@ Sets the number of days to show in the list tab. Defaults to 28. Only used with 
 `custom_list_button="list"` \
 Sets the label for the listCustom button. Defaults to "list".
 
+`views="dayGridMonth, listCustom"` \
+Sets the view types available. If only one view is provided, no view switch buttons will be shown. Defaults to `dayGridMonth, listCustom`.
+
+`initial_view="dayGridMonth"` \
+Sets the default view to be displayed when opening the page. Defaults to `dayGridMonth`.
+
+`enforce_listview_on_mobile="true"` \
+Sets the change to the list view behavior on small screens. Options: `true` and `false`. Defaults to `true`. This option has no effect if there is no list view declared in the `views` option.
+
+`show_today_button="true"` \
+Sets the visibility of the `Today` button. Options: `true` and `false`. Defaults to `true`.
+
+`show_title="true"` \
+Sets the visibility of the calendar `title`. Options: `true` and `false`. Defaults to `true`.
+
 ### Obtaining Google Calendar API Key
 
 1. Go to the Google Developer Console and create a new project (it might take a second).

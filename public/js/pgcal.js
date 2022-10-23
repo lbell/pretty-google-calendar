@@ -3,25 +3,34 @@ document.addEventListener("DOMContentLoaded", function () {
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
-  //   console.log(pgcalSettings); // DEBUG
+  const views = pgcal_resolve_views(pgcalSettings)
 
-  function getItemByFuzzyValue(array, value) {
-    return array.find((item) => item.toLowerCase().includes(value.toLowerCase()));
-  }
-  const listArray = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
-  const listType = getItemByFuzzyValue(listArray, pgcalSettings["list_type"]);
-  //   console.log(listType); // DEBUG
+  // console.log(':: pgcalSettings')
+  // console.table(pgcalSettings)
+  // console.log(':: views')
+  // console.table(views)
+
+  const toolbarLeft = pgcal_is_truthy(pgcalSettings["show_today_button"])
+    ? "prev,next today"
+    : "prev,next"
+  const toolbarCenter = pgcal_is_truthy(pgcalSettings["show_title"])
+    ? "title"
+    : ""
+  const toolbarRight = views.length > 1
+    ? views.all.join(',')
+    : ""
+
+  let selectedView = views.initial
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     locale: pgcalSettings["locale"],
-    // Pull GCal from settings.
     googleCalendarApiKey: pgcalSettings["google_api"],
     events: {
       googleCalendarId: pgcalSettings["gcal"],
     },
 
     views: {
-      // options apply to dayGridMonth, dayGridWeek, and dayGridDay views
+      // Options apply to dayGridMonth, dayGridWeek, and dayGridDay views
       dayGrid: {
         eventTimeFormat: {
           hour: "numeric",
@@ -29,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
           meridiem: "short",
         },
       },
-      //   Custom View
+      // Custom List View
       listCustom: {
         type: "list",
         duration: { days: parseInt(pgcalSettings["custom_days"]) },
@@ -42,22 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
     height: "auto",
     fixedWeekCount: false, // True: 6 weeks, false: flex for month
 
-    // list options
+    // List options
     listDayFormat: { weekday: "long", month: "long", day: "numeric" },
 
     timeZone: pgcalSettings["fixed_tz"], // TODO: Necessary?
 
+    initialView: views.initial,
+
     headerToolbar: pgcal_is_mobile()
       ? {
-          left: "prev,next today",
-          center: "",
-          right: `dayGridMonth,${listType}`,
-        }
+        left: toolbarLeft,
+        center: "",
+        right: toolbarRight,
+      }
       : {
-          left: "prev,next today",
-          center: "title",
-          right: `dayGridMonth,${listType}`,
-        },
+        left: toolbarLeft,
+        center: toolbarCenter,
+        right: toolbarRight,
+      },
 
     eventDidMount: function (info) {
       if (pgcalSettings["use_tooltip"]) {
@@ -71,20 +82,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     },
 
-    initialView: pgcal_is_mobile() ? listType : "dayGridMonth",
-
     // Change view on window resize
     windowResize: function (view) {
       // Catch mobile chrome, which changes window size as nav bar appears
       // so only fire if width has changed.
-      if (window.innerWidth !== width) {
+      if (
+        window.innerWidth !== width &&
+        views.hasList &&
+        views.wantsToEnforceListviewOnMobile
+      ) {
         if (pgcal_is_mobile()) {
-          calendar.changeView(listType);
-        } else {
-          calendar.changeView("dayGridMonth");
+          selectedView = calendar.view.type
+          return calendar.changeView(views.listType);
         }
+
+        return calendar.changeView(selectedView);
       }
-    },
+
+    }
   });
 
   calendar.render();
