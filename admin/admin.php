@@ -48,9 +48,9 @@ class pgcalSettings {
 					</text>
 				</svg>
 			</div>
-			<h1><?= esc_html__('Pretty Google Calendar Settings', 'pgcal') ?></h1>
+			<h1><?php echo esc_html__('Pretty Google Calendar Settings', 'pgcal') ?></h1>
 			<p>
-				<button><a href="https://github.com/sponsors/lbell"><?= esc_html__('Sponsor', 'pgcal') ?></a></button>
+				<button><a href="https://github.com/sponsors/lbell"><?php echo esc_html__('Sponsor', 'pgcal') ?></a></button>
 			</p>
 		</div>
 		<form method="post" action="options.php">
@@ -131,12 +131,12 @@ class pgcalSettings {
 	 * Print the Section text
 	 */
 	public function pgcal_pring_main_info() {
-        printf(
-            '<p>%s [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
+		printf(
+			'<p>%s [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
       		<p>%s <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>',
-            esc_html__("Shortcode Usage:", "pgcal"),
-            esc_html__("You must have a google calendar API. See:", "pgcal")
-        );
+			esc_html__("Shortcode Usage:", "pgcal"),
+			esc_html__("You must have a google calendar API. See:", "pgcal")
+		);
 	}
 
 	/**
@@ -152,7 +152,7 @@ class pgcalSettings {
 	public function pgcal_tooltip_callback() {
 		printf(
 			'<input title="%s" type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
-            esc_html__("Use the popper/tooltip plugin to display event information.", "pgcal"),
+			esc_html__("Use the popper/tooltip plugin to display event information.", "pgcal"),
 			isset($this->options['use_tooltip']) ? 'checked' : ''
 		);
 	}
@@ -160,8 +160,8 @@ class pgcalSettings {
 	public function pgcal_no_link_callback() {
 		printf(
 			'<input title="%s" type="checkbox" id="no_link" name="pgcal_settings[no_link]" value="yes" %s />',
-            esc_html__("Disable the link to the event on the calendar.", "pgcal"),
-            isset($this->options['no_link']) ? 'checked' : ''
+			esc_html__("Disable the link to the event on the calendar.", "pgcal"),
+			isset($this->options['no_link']) ? 'checked' : ''
 		);
 	}
 }

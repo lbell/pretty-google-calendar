@@ -37,9 +37,12 @@ How it works:
 1. Upload the `pretty-google-calendar` folder to the `/wp-content/plugins/` directory.
 1. Activate `Pretty Google Calendar` through the 'Plugins' menu in WordPress dashboard.
 1. Obtain your Google Calendar API key (see below)
-1. Use the shortcode `[pretty_google_calendar gcal=calendarID@group.calendar.google.com]` directly in your page or post content.
+1. Use the shortcode `[pretty_google_calendar gcal="calendarID@group.calendar.google.com"]` directly in your page or post content.
 
 ### Shortcode Options
+
+`gcal="CalendarID,CalendarID"`\
+Calendar ID of the desired google calendar (note: must be set to 'Make available to public'. To display multiple calendars, separate ID's by a comma. (Note: calendars must fall under same API access.))
 
 `locale="en"` \
 Sets the locale for calendar. Defaults to "en".
@@ -153,6 +156,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ### 1.4.0
 
+- Added: support for multiple calendars displayed in one
 - Added: full internationalization (Thanks @mwguerra!)
 - Added: new shortcode parameters (view, initial_view, enforce_listview_on_mobile, show_today_button, show_title) (Heroic work by @mwguerra!)
 - Tested to WordPress 6.0.3

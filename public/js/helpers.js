@@ -1,6 +1,22 @@
 const { __, _x, _n, sprintf } = wp.i18n;
 
 /**
+ * Splits comma separated list of calendars into array, then loops through and
+ * builds eventSources object.
+ *
+ * @param {array} settings Settings received from shortcode parameters
+ * @returns object
+ */
+function pgcal_resolve_cals(settings) {
+  let calArgs = [];
+  const cals = settings["gcal"].split(",");
+  cals.forEach((cal) => {
+    calArgs.push({ googleCalendarId: cal });
+  });
+  return calArgs;
+}
+
+/**
  * Computes all variables related to views
  *
  * @param {array} settings Settings received from the shortcode parameters
@@ -11,9 +27,7 @@ const pgcal_resolve_views = (settings) => {
   const listViews = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
   const allowedViews = [...listViews, ...gridViews];
 
-  const wantsToEnforceListviewOnMobile = pgcal_is_truthy(
-    settings["enforce_listview_on_mobile"]
-  );
+  const wantsToEnforceListviewOnMobile = pgcal_is_truthy(settings["enforce_listview_on_mobile"]);
 
   let initialView = "dayGridMonth";
 
@@ -39,7 +53,7 @@ const pgcal_resolve_views = (settings) => {
   };
 
   return views;
-}
+};
 
 /**
  * Tests if the given array has the value in any part of each item
@@ -47,9 +61,7 @@ const pgcal_resolve_views = (settings) => {
  * @param {string} csv Array to be tested
  * @returns array
  */
-const pgcal_csv_to_array = (csv) => csv
-  .split(",")
-  .map(view => view.trim());
+const pgcal_csv_to_array = (csv) => csv.split(",").map((view) => view.trim());
 
 /**
  * Tests if the given array has the value in any part of each item
@@ -58,9 +70,8 @@ const pgcal_csv_to_array = (csv) => csv
  * @param {string} value String to be checked
  * @returns boolean
  */
-const pgcal_get_item_by_fuzzy_value = (array, value) => array.find(
-  item => item.toLowerCase().includes(value.toLowerCase())
-);
+const pgcal_get_item_by_fuzzy_value = (array, value) =>
+  array.find((item) => item.toLowerCase().includes(value.toLowerCase()));
 
 /**
  * Tests if a value is truthy
@@ -69,10 +80,9 @@ const pgcal_get_item_by_fuzzy_value = (array, value) => array.find(
  * @returns boolean
  */
 function pgcal_is_truthy(value) {
-  const lowercaseValue = (typeof value === "string") ? value.toLowerCase() : value;
+  const lowercaseValue = typeof value === "string" ? value.toLowerCase() : value;
   return ["true", "1", true, 1].includes(lowercaseValue);
 }
-
 
 /**
  * Tests whether the window size is equal to or less than 768... an arbitrary
@@ -118,7 +128,7 @@ function pgcal_breakify(text) {
  * @returns Formatted map button
  */
 function pgcal_mapify(text) {
-  const buttonLabel = __('Map', 'pgcal');
+  const buttonLabel = __("Map", "pgcal");
   let footer = "";
   if (text) {
     footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
@@ -135,7 +145,7 @@ function pgcal_mapify(text) {
  * @returns formatted HTML url
  */
 function pgcal_linkify(url) {
-  const buttonLabel = __('Add to Google Calendar', 'pgcal');
+  const buttonLabel = __("Add to Google Calendar", "pgcal");
   if (url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
