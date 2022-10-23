@@ -128,7 +128,7 @@ function pgcal_breakify(text) {
  * @returns Formatted map button
  */
 function pgcal_mapify(text) {
-  const buttonLabel = __("Map", "pgcal");
+  const buttonLabel = __("Map", "pretty-google-calendar");
   let footer = "";
   if (text) {
     footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
@@ -145,7 +145,7 @@ function pgcal_mapify(text) {
  * @returns formatted HTML url
  */
 function pgcal_linkify(url) {
-  const buttonLabel = __("Add to Google Calendar", "pgcal");
+  const buttonLabel = __("Add to Google Calendar", "pretty-google-calendar");
   if (url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }

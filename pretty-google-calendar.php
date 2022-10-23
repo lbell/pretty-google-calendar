@@ -3,10 +3,10 @@
 Plugin Name: Pretty Google Calendar
 Plugin URI: https://github.com/lbell/pretty-google-calendar
 Description: Google Calendars that aren't ugly.
-Version: 1.4.0
+Version: 1.4.1
 Author: LBell
 Author URI: http://lorenbell.com
-Text Domain: pgcal
+Text Domain: pretty-google-calendar
 */
 /*  Copyright 2020 LBell
 
@@ -25,12 +25,12 @@ Text Domain: pgcal
 */
 
 
-define('PGCAL_VER', "1.4.0");
+define('PGCAL_VER', "1.4.1");
 define('PGCAL_DIR', plugin_dir_path(__FILE__)); // Trailing slash
 define('PGCAL_TEMPLATE_DIR', PGCAL_DIR . 'templates/');
 define('PGCAL_URL', plugin_dir_url(__FILE__));
 
-load_plugin_textdomain('pgcal', false, PGCAL_DIR . 'languages');
+load_plugin_textdomain('pretty-google-calendar', false, PGCAL_DIR . 'languages');
 
 require(PGCAL_DIR . 'util/utils.php');
 require(PGCAL_DIR . 'admin/admin.php');
