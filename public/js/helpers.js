@@ -1,3 +1,4 @@
+const { __, _x, _n, sprintf } = wp.i18n;
 
 /**
  * Computes all variables related to views
@@ -72,6 +73,7 @@ function pgcal_is_truthy(value) {
   return ["true", "1", true, 1].includes(lowercaseValue);
 }
 
+
 /**
  * Tests whether the window size is equal to or less than 768... an arbitrary
  * standard for what is mobile...
@@ -116,11 +118,12 @@ function pgcal_breakify(text) {
  * @returns Formatted map button
  */
 function pgcal_mapify(text) {
+  const buttonLabel = __('Map', 'pgcal');
   let footer = "";
   if (text) {
     footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
       text
-    )}">Map</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
+    )}">${buttonLabel}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
   }
   return footer;
 }
@@ -132,7 +135,8 @@ function pgcal_mapify(text) {
  * @returns formatted HTML url
  */
 function pgcal_linkify(url) {
+  const buttonLabel = __('Add to Google Calendar', 'pgcal');
   if (url) {
-    return `<a class="button" href="${url}" target="_blank">Add to Google Calendar</a>`;
+    return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
 }
