@@ -41,9 +41,11 @@ function pgcal_register_frontend_js() {
 	wp_register_script('tippy', PGCAL_URL . 'public/lib/tippy/tippy.min.js', null, PGCAL_VER, true);
 
 	// Local
-	wp_register_script('pgcal_helpers', PGCAL_URL . 'public/js/helpers.js', null, PGCAL_VER, true);
+	wp_register_script('pgcal_helpers', PGCAL_URL . 'public/js/helpers.js', ['wp-i18n'], PGCAL_VER, true);
 	wp_register_script('pgcal_loader', PGCAL_URL . 'public/js/pgcal.js', null, PGCAL_VER, true);
 	wp_register_script('pgcal_tippy', PGCAL_URL . 'public/js/tippy.js', null, PGCAL_VER, true);
+
+    wp_set_script_translations('pgcal_helpers', 'pgcal');
 }
 
 

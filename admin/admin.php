@@ -21,8 +21,8 @@ class pgcalSettings {
 	public function pgcal_add_plugin_page() {
 		// This page will be under "Settings"
 		add_options_page(
-			'Settings Admin',
-			'Pretty Google Calendar Settings',
+			esc_attr__('Settings Admin', 'pgcal'),
+			esc_attr__('Pretty Google Calendar Settings', 'pgcal'),
 			'manage_options',
 			'pgcal-setting-admin',
 			array($this, 'pgcal_create_admin_page')
@@ -48,9 +48,9 @@ class pgcalSettings {
 					</text>
 				</svg>
 			</div>
-			<h1>Pretty Google Calendar Settings</h1>
+			<h1><?= esc_html__('Pretty Google Calendar Settings', 'pgcal') ?></h1>
 			<p>
-				<button><a href="https://github.com/sponsors/lbell">Sponsor</a></button>
+				<button><a href="https://github.com/sponsors/lbell"><?= esc_html__('Sponsor', 'pgcal') ?></a></button>
 			</p>
 		</div>
 		<form method="post" action="options.php">
@@ -77,14 +77,14 @@ class pgcalSettings {
 
 		add_settings_section(
 			'pgcal-main-settings',
-			'Usage',
+			esc_attr__('Usage', 'pgcal'),
 			array($this, 'pgcal_pring_main_info'), // Callback
 			'pgcal-setting-admin' // Page
 		);
 
 		add_settings_field(
 			'google_api',
-			'Google API',
+			esc_attr__('Google API', 'pgcal'),
 			array($this, 'pgcal_gapi_callback'), // Callback
 			'pgcal-setting-admin', // Page
 			'pgcal-main-settings' // Section
@@ -92,7 +92,7 @@ class pgcalSettings {
 
 		add_settings_field(
 			'use_tooltip',
-			'Use Tooltip',
+			esc_attr__('Use Tooltip', 'pgcal'),
 			array($this, 'pgcal_tooltip_callback'),
 			'pgcal-setting-admin',
 			'pgcal-main-settings'
@@ -100,7 +100,7 @@ class pgcalSettings {
 
 		add_settings_field(
 			'no_link',
-			'Disable Event Link',
+			esc_attr__('Disable Event Link', 'pgcal'),
 			array($this, 'pgcal_no_link_callback'),
 			'pgcal-setting-admin',
 			'pgcal-main-settings'
@@ -131,12 +131,13 @@ class pgcalSettings {
 	 * Print the Section text
 	 */
 	public function pgcal_pring_main_info() {
-		print '
-			<p>Shortcode Usage: [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
-      		<p>You must have a google calendar API. See: <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>
-	  ';
+        printf(
+            '<p>%s [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
+      		<p>%s <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>',
+            esc_html__("Shortcode Usage:", "pgcal"),
+            esc_html__("You must have a google calendar API. See:", "pgcal")
+        );
 	}
-
 
 	/**
 	 * Get the settings option array and print one of its values
@@ -150,15 +151,17 @@ class pgcalSettings {
 
 	public function pgcal_tooltip_callback() {
 		printf(
-			'<input title="Use the popper/tooltip plugin to display event information." type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
+			'<input title="%s" type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
+            esc_html__("Use the popper/tooltip plugin to display event information.", "pgcal"),
 			isset($this->options['use_tooltip']) ? 'checked' : ''
 		);
 	}
 
 	public function pgcal_no_link_callback() {
 		printf(
-			'<input title="Disable the link to the event on the calendar." type="checkbox" id="no_link" name="pgcal_settings[no_link]" value="yes" %s />',
-			isset($this->options['no_link']) ? 'checked' : ''
+			'<input title="%s" type="checkbox" id="no_link" name="pgcal_settings[no_link]" value="yes" %s />',
+            esc_html__("Disable the link to the event on the calendar.", "pgcal"),
+            isset($this->options['no_link']) ? 'checked' : ''
 		);
 	}
 }
