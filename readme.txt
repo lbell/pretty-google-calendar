@@ -37,6 +37,7 @@ This is a light and simple to use plugin that embeds Google Calendars in your we
 1. Upload the `pretty-google-calendar` folder to the `/wp-content/plugins/` directory.
 1. Activate `Pretty Google Calendar` through the 'Plugins' menu in WordPress dashboard.
 1. Obtain your Google Calendar API key (see below)
+1. Add the API key to Settings -> Pretty Google Calendar Settings
 1. Use the shortcode `[pretty_google_calendar gcal="calendarID@group.calendar.google.com"]` directly in your page or post content.
 
 **Shortcode Options**
