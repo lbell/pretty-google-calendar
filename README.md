@@ -4,8 +4,8 @@
 **Donate link:** https://github.com/sponsors/lbell \
 **Tags:** calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty \
 **Requires at least:** 3.0 \
-**Tested up to:** 6.0.3 \
-**Stable tag:** 1.4.1 \
+**Tested up to:** 6.3.1 \
+**Stable tag:** 1.4.2 \
 **License:** GPLv2 or later \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,10 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
+
+### 1.4.2
+- Tested to WordPress 6.3.1
+- Fixed: Remove seconds on pop-up time
 
 ### 1.4.1
 
