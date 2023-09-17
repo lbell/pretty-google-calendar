@@ -79,15 +79,10 @@ Sets the visibility of the calendar title. Options: "true" and "false". Defaults
 
 **Obtaining Google Calendar API Key**
 
-1. Go to the Google Developer Console and create a new project (it might take a second).
-1. Once in the project, go to **APIs & auth > APIs** on the sidebar.
-1. Find “Calendar API” in the list and turn it ON.
-1. On the sidebar, click **APIs & auth > Credentials**.
-1. In the “Public API access” section, click “Create new Key”.
-1. Choose “Browser key”.
-1. If you know what domains will host your calendar, enter them into the box. Otherwise, leave it blank. You can always change it later.
-1. Your new API key will appear. Copy this value into the Pretty Google Calendar settings box.
-1. It might take second or two before your API starts working.
+1. The good folks at WPBeginner have a comprehensive writeup: https://www.wpbeginner.com/plugins/how-to-add-google-calendar-in-wordpress/ 
+
+(Although in the API Restrictions Section, you may need "Don't Restrict Key" selected. YMMV.)
+
 
 Make your Google Calendar public:
 
