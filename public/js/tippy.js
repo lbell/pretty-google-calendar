@@ -11,7 +11,7 @@ function pgcal_tippyRender(info) {
   let toolContent = `
     <h2> ${info.event.title} </h2>
     <p> ${timeString}</p>`;
-  toolContent += pgcal_breakify(info.event.extendedProps.description);
+  toolContent += pgcal_breakify(pgcal_urlify(info.event.extendedProps.description));
 
   toolContent += `<div class="toolloc">${pgcal_mapify(
     info.event.extendedProps.location
