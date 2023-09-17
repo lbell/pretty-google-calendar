@@ -1,17 +1,27 @@
 function pgcal_tippyRender(info) {
   // console.log(info.event); // DEBUG
 
-  const timeString = info.event.allDay
+  const startTime = info.event.allDay
     ? "All Day"
     : new Date(info.event.startStr).toLocaleTimeString([], {
-        hour: "2-digit",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+
+  const endTime = info.event.allDay
+    ? ""
+    : " - " +
+      new Date(info.event.endStr).toLocaleTimeString([], {
+        hour: "numeric",
         minute: "2-digit",
       });
 
   let toolContent = `
     <h2> ${info.event.title} </h2>
-    <p> ${timeString}</p>`;
-  toolContent += pgcal_breakify(pgcal_urlify(info.event.extendedProps.description));
+    <p> ${startTime}${endTime}</p>`;
+  toolContent += pgcal_breakify(
+    pgcal_urlify(info.event.extendedProps.description)
+  );
 
   toolContent += `<div class="toolloc">${pgcal_mapify(
     info.event.extendedProps.location

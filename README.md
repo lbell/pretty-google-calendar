@@ -150,6 +150,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ### 1.4.2
 - Tested to WordPress 6.3.1
+- Added: End times in details popup
 - Added: Shortcode instructions link to settings page
 - Fixed: URLs in descriptions are now parsed
 - Fixed: Remove seconds on pop-up time
