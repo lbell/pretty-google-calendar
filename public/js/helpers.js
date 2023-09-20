@@ -24,10 +24,18 @@ function pgcal_resolve_cals(settings) {
  */
 const pgcal_resolve_views = (settings) => {
   const gridViews = ["dayGridMonth"];
-  const listViews = ["listDay", "listWeek", "listMonth", "listYear", "listCustom"];
+  const listViews = [
+    "listDay",
+    "listWeek",
+    "listMonth",
+    "listYear",
+    "listCustom",
+  ];
   const allowedViews = [...listViews, ...gridViews];
 
-  const wantsToEnforceListviewOnMobile = pgcal_is_truthy(settings["enforce_listview_on_mobile"]);
+  const wantsToEnforceListviewOnMobile = pgcal_is_truthy(
+    settings["enforce_listview_on_mobile"]
+  );
 
   let initialView = "dayGridMonth";
 
@@ -37,7 +45,10 @@ const pgcal_resolve_views = (settings) => {
 
   const viewsArray = pgcal_csv_to_array(settings["views"]);
   const viewsIncludesList = pgcal_get_item_by_fuzzy_value(viewsArray, "list");
-  const listType = pgcal_get_item_by_fuzzy_value(viewsArray, settings["list_type"]);
+  const listType = pgcal_get_item_by_fuzzy_value(
+    viewsArray,
+    settings["list_type"]
+  );
 
   if (pgcal_is_mobile() && wantsToEnforceListviewOnMobile) {
     initialView = listType;
@@ -80,7 +91,8 @@ const pgcal_get_item_by_fuzzy_value = (array, value) =>
  * @returns boolean
  */
 function pgcal_is_truthy(value) {
-  const lowercaseValue = typeof value === "string" ? value.toLowerCase() : value;
+  const lowercaseValue =
+    typeof value === "string" ? value.toLowerCase() : value;
   return ["true", "1", true, 1].includes(lowercaseValue);
 }
 
@@ -95,15 +107,46 @@ function pgcal_is_mobile(width = 768) {
 }
 
 /**
- * Detect URLs and encase them in <a>
+ * Detect URLs and encase them in <a>. Ignores existing <a> tags.
  *
  * @param {*} text
  * @returns
  */
 function pgcal_urlify(text) {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const urlRegex = /<a[\s>].*?<\/a>|https?:\/\/[^\s]+[?!.]*\/?\b/g;
   if (text) {
-    return text.replace(urlRegex, '<a target="_blank" href="$1">$1</a>');
+    return text.replace(urlRegex, function (m) {
+      if (m.startsWith("<a")) {
+        // If it's an existing <a> tag, return it as is
+        return m;
+      } else {
+        // Extract the URL part from the matched string
+        const urlMatch = m.match(/https?:\/\/[^\s]+[?!.]*\/?\b/);
+
+        if (urlMatch) {
+          const url = urlMatch[0];
+          const punctuation = url.match(/[?!.]*$/);
+
+          if (punctuation) {
+            const cleanedURL = url.replace(/[?!.]*$/, "");
+            const linkText = cleanedURL;
+            return (
+              '<a target="_blank" href="' +
+              cleanedURL +
+              '">' +
+              linkText +
+              "</a>" +
+              punctuation[0]
+            );
+          } else {
+            // If no punctuation found, treat the whole URL as the link text
+            return '<a target="_blank" href="' + url + '">' + url + "</a>";
+          }
+        }
+        // If no URL found, return the original match
+        return m;
+      }
+    });
   }
   return "";
 }
