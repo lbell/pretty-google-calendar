@@ -1,5 +1,8 @@
 <?php
 function pgcal_shortcode($atts) {
+  $default = array();
+  $globalSettings = get_option('pgcal_settings', $default);
+
   $args = shortcode_atts(
     array(
       'gcal'                       => "",
@@ -14,6 +17,8 @@ function pgcal_shortcode($atts) {
       'show_today_button'          => "true",
       'show_title'                 => "true",
       'id_hash'                    => bin2hex(random_bytes(5)),
+      'use_tooltip'                => $globalSettings['use_tooltip'] ? "true" : "false",
+      'no_link'                    => $globalSettings['no_link'] ? "true" : "false",
     ),
     $atts
   );
@@ -21,14 +26,11 @@ function pgcal_shortcode($atts) {
   // Add the attributes from the shortcode OVERRIDING the stored settings
   $pgcalSettings = $args;
 
+
+
   wp_enqueue_script('fullcalendar');
   wp_enqueue_script('fc_locales');
-  wp_enqueue_script('pgcal_helpers');
-  wp_enqueue_style('fullcalendar');
-  wp_enqueue_style('pgcal_css');
-
-  // Enqueue scripts for tooltips if needed (e.g., popper and tippy)
-  if (isset($globalSettings['use_tooltip'])) {
+  if ($pgcalSettings['use_tooltip'] === "true") {
     wp_enqueue_script('popper');
     wp_enqueue_script('tippy');
     wp_enqueue_script('pgcal_tippy');
@@ -37,7 +39,18 @@ function pgcal_shortcode($atts) {
     wp_enqueue_style('tippy_light');
   }
 
+  // Load Local Scripts
+  wp_enqueue_script('pgcal_helpers');
   wp_enqueue_script('pgcal_loader');
+
+  // Load Styles
+  wp_enqueue_style('fullcalendar');
+  wp_enqueue_style('pgcal_css');
+
+
+
+
+  // wp_enqueue_script('pgcal_loader');
 
 
   $shortcode_output = "

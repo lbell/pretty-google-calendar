@@ -37,10 +37,8 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
   const views = pgcal_resolve_views(pgcalSettings);
   const cals = pgcal_resolve_cals(pgcalSettings);
 
-  //   console.log(":: pgcalSettings");
-  //   console.table(pgcalSettings);
-  //   console.log(":: views");
-  //   console.table(views);
+  // console.table(pgcalSettings); // DEBUG
+  // console.table(views); // DEBUG
 
   const toolbarLeft = pgcal_is_truthy(pgcalSettings["show_today_button"])
     ? "prev,next today"
@@ -105,13 +103,13 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
     //     },
 
     eventDidMount: function (info) {
-      if (pgcalSettings["use_tooltip"]) {
+      if (pgcalSettings["use_tooltip"] === "true") {
         pgcal_tippyRender(info, currCal);
       }
     },
 
     eventClick: function (info) {
-      if (pgcalSettings["use_tooltip"] || pgcalSettings["no_link"]) {
+      if (pgcalSettings["use_tooltip"] === "true" || pgcalSettings["no_link"] === "true") {
         info.jsEvent.preventDefault(); // Prevent following link
       }
     },

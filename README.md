@@ -79,6 +79,12 @@ Sets the visibility of the calendar `title`. Options: `true` and `false`. Defaul
 `id_hash=random` \
 Sets the ID hash for a calendar. If you have multiple calendars on a page and need to style them, you can set this to a permanent code. Otherwise, it'll randomly generate each load.
 
+`use_tooltip="true"` \
+Migrating from global setting for individual calendar styling. Whether the floating tooltip for event pops up on click.
+
+`no_link="true"` \
+Migrating from global setting for individual calendar styling. Whether to disable link to calendar.google.com on click.
+
 ### Obtaining Google Calendar API Key
 
 1. The good folks at WPBeginner have a comprehensive writeup: https://www.wpbeginner.com/plugins/how-to-add-google-calendar-in-wordpress/
@@ -154,6 +160,8 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 ### 1.6.0
 
 - Added: Multiple calendars on one page
+- Added: use_tooltip shortcode arg for calendar specific options
+- Added: no_link shortcode arg for calendar speficic options
 - Fixed: Security fixes
 
 ### 1.5.1
