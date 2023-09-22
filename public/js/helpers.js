@@ -193,3 +193,4 @@ function pgcal_linkify(url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
 }
+

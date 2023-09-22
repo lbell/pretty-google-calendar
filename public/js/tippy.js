@@ -1,5 +1,5 @@
-function pgcal_tippyRender(info) {
-  console.log(info.event); // DEBUG
+function pgcal_tippyRender(info, currCal) {
+  // console.log(info.event); // DEBUG
 
   const startTime = info.event.allDay
     ? "All Day"
@@ -54,7 +54,7 @@ function pgcal_tippyRender(info) {
         }
       : "",
     interactive: "true", // Allows clicking inside
-    appendTo: document.getElementById("pgcalendar"),
+    appendTo: document.getElementById(currCal),
     maxWidth: 600, // TODO: from settings
     boundary: "window",
   });

@@ -1,5 +1,36 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const calendarEl = document.getElementById("pgcalendar");
+// document.addEventListener("DOMContentLoaded", function () {
+
+/**
+ * Get global settings securely via Ajax
+ *
+ * @returns global settings
+ */
+async function pgcalFetchGlobals(ajaxurl) {
+  return new Promise(function (resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", ajaxurl, true);
+    xhr.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded; charset=UTF-8"
+    );
+    var data = "action=pgcal_ajax_action";
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        var response = JSON.parse(xhr.responseText);
+        resolve(response);
+      } else {
+        reject("AJAX request failed with status " + xhr.status);
+      }
+    };
+    xhr.send(data);
+  });
+}
+
+async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
+  const globalSettings = await pgcalFetchGlobals(ajaxurl);
+
+  const currCal = `pgcalendar-${pgcalSettings["id_hash"]}`;
+  const calendarEl = document.getElementById(currCal);
   calendarEl.innerHTML = "";
   let width = window.innerWidth;
 
@@ -23,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     locale: pgcalSettings["locale"],
-    googleCalendarApiKey: pgcalSettings["google_api"],
+    googleCalendarApiKey: globalSettings["google_api"],
 
     eventSources: cals,
 
@@ -75,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     eventDidMount: function (info) {
       if (pgcalSettings["use_tooltip"]) {
-        pgcal_tippyRender(info);
+        pgcal_tippyRender(info, currCal);
       }
     },
 
@@ -104,4 +135,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   calendar.render();
-});
+}

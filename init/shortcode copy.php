@@ -1,5 +1,13 @@
 <?php
+
 function pgcal_shortcode($atts) {
+  $default = array();
+  $pgcalSettings = get_option('pgcal_settings', $default);
+
+  // v2.0.0 - pull locale from worpdress settings
+  // $locale = get_locale() ? get_locale() : 'en';
+  // $locale = ($locale === 'en_US') ? 'en' : $locale;
+
   $args = shortcode_atts(
     array(
       'gcal'                       => "",
@@ -19,16 +27,13 @@ function pgcal_shortcode($atts) {
   );
 
   // Add the attributes from the shortcode OVERRIDING the stored settings
-  $pgcalSettings = $args;
+  $pgcalSettings = array_merge($pgcalSettings, $args);
 
+
+  // Load Scripts
   wp_enqueue_script('fullcalendar');
   wp_enqueue_script('fc_locales');
-  wp_enqueue_script('pgcal_helpers');
-  wp_enqueue_style('fullcalendar');
-  wp_enqueue_style('pgcal_css');
-
-  // Enqueue scripts for tooltips if needed (e.g., popper and tippy)
-  if (isset($globalSettings['use_tooltip'])) {
+  if (isset($pgcalSettings['use_tooltip'])) {
     wp_enqueue_script('popper');
     wp_enqueue_script('tippy');
     wp_enqueue_script('pgcal_tippy');
@@ -37,26 +42,20 @@ function pgcal_shortcode($atts) {
     wp_enqueue_style('tippy_light');
   }
 
+  // Load Local Scripts
+  wp_enqueue_script('pgcal_helpers');
   wp_enqueue_script('pgcal_loader');
 
+  // Load Styles
+  wp_enqueue_style('fullcalendar');
+  wp_enqueue_style('pgcal_css');
 
-  $shortcode_output = "
-  <div id='pgcalendar-" . $pgcalSettings["id_hash"] . "' class='pgcal-container'>" . esc_html__("loading...", "pretty-google-calendar") . "</div>
-  <div class='pgcal-branding'>" . esc_html__("Powered by", "pretty-google-calendar") . " <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
-  ";
-
-  $script = "
-    document.addEventListener('DOMContentLoaded', function() {
-      function pgcal_inlineScript(settings) {
-        var ajaxurl = '" . admin_url('admin-ajax.php') . "';
-        pgcal_render_calendar(settings, ajaxurl);
-      }
-
-      pgcal_inlineScript(" . json_encode($pgcalSettings) . ");
-    });
-  ";
-  wp_add_inline_script('pgcal_loader', $script);
+  // Pass PHP data to script(s)
+  wp_localize_script('pgcal_loader', 'pgcalSettings', $pgcalSettings);
 
 
-  return $shortcode_output;
+  return "
+    <div id='pgcalendar-" . $pgcalSettings["id_hash"] . "'>" . esc_html__("loading...", "pretty-google-calendar") . "</div>
+    <div class='pgcal-branding'>" . esc_html__("Powered by", "pretty-google-calendar") . " <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
+    ";
 }
