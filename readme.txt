@@ -77,6 +77,9 @@ Sets the visibility of the "Today" button. Options: "true" and "false". Defaults
 `show_title="true"`
 Sets the visibility of the calendar title. Options: "true" and "false". Defaults to "true".
 
+`id_hash=random`
+Sets the ID hash for a calendar. If you have multiple calendars on a page and need to style them, you can set this to a permanent code. Otherwise, it'll randomly generate each load.
+
 **Obtaining Google Calendar API Key**
 
 1. The good folks at WPBeginner have a comprehensive writeup: https://www.wpbeginner.com/plugins/how-to-add-google-calendar-in-wordpress/ 
