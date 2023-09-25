@@ -109,7 +109,10 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
     },
 
     eventClick: function (info) {
-      if (pgcalSettings["use_tooltip"] === "true" || pgcalSettings["no_link"] === "true") {
+      if (
+        pgcalSettings["use_tooltip"] === "true" ||
+        pgcalSettings["no_link"] === "true"
+      ) {
         info.jsEvent.preventDefault(); // Prevent following link
       }
     },
