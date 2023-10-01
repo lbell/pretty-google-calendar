@@ -201,3 +201,28 @@ function pgcal_linkify(url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
 }
+
+/**
+ * Merge arrays overriding arguments
+ *
+ */
+function pgcal_argmerge(defaults, override) {
+  // override = Array.isArray(atts) ? override : Object.assign({}, override);
+  const out = {};
+
+  for (const [name, defaultVal] of Object.entries(defaults)) {
+    if (override.hasOwnProperty(name)) {
+      out[name] = override[name];
+    } else {
+      out[name] = defaultVal;
+    }
+  }
+
+  for (const name in override) {
+    if (!out.hasOwnProperty(name)) {
+      out[name] = override[name];
+    }
+  }
+
+  return out;
+}

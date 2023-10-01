@@ -38,7 +38,7 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
   const views = pgcal_resolve_views(pgcalSettings);
   const cals = pgcal_resolve_cals(pgcalSettings);
 
-  console.table(cals); // DEBUG
+  // console.table(cals); // DEBUG
   // console.table(pgcalSettings); // DEBUG
   // console.table(views); // DEBUG
 
@@ -52,15 +52,7 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
 
   let selectedView = views.initial;
 
-  let pfcalDefaults = {
-
-
-  }
-
-  
-
-
-  const calendar = new FullCalendar.Calendar(calendarEl, {
+  const pgcalDefaults = {
     locale: pgcalSettings["locale"],
     googleCalendarApiKey: globalSettings["google_api"],
 
@@ -143,7 +135,15 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
         }
       }
     },
-  });
+  };
+  
+  const pgcalOverrides = JSON.parse(pgcalSettings["fc_args"]);
+  const pgCalArgs = pgcal_argmerge(pgcalDefaults, pgcalOverrides);
+  
+  // console.log(pgcalSettings["fc_args"]);
+  // console.log(JSON.stringify(pgcalDefaults));
+  // console.log(JSON.stringify(pgCalArgs));
 
+  const calendar = new FullCalendar.Calendar(calendarEl, pgCalArgs);
   calendar.render();
 }

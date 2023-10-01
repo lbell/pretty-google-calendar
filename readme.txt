@@ -5,7 +5,7 @@ Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty
 Requires at least: 3.0
 Tested up to: 6.3.1
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,16 @@ Migrating from global setting for individual calendar styling. Whether the float
 `no_link="true"`
 Migrating from global setting for individual calendar styling. Whether to disable link to calendar.google.com on click.
 
+`fc_args` = JSON string ((EXPERIMENTAL))
+Allows you to override or impliment just about any FullCalendar argument (with some exception). For example: `fc_args='{"weekNumbers":"true", "eventTextColor":"red"}'`
+
+Note: any argument that contains `[]` will fail due to Wordpress' parsing of shortcodes. No workaround currently.
+Note: this is epeerimental - things may break.
+
+**Styling Multiple Calendars**
+
+As of v1.7.0, each calendar gets it's own CSS selector: `pgcal-event-#` where the # is the order of the listed calendar (starting with 0). So if you have two calendars in one, you can use `pgcal-event-0` to style the first, and `pgcal-event-1` to style the second calendar.
+
 **Obtaining Google Calendar API Key**
 
 1. The good folks at WPBeginner have a comprehensive writeup: https://www.wpbeginner.com/plugins/how-to-add-google-calendar-in-wordpress/ 
@@ -139,6 +149,11 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 == Changelog ==
+
+= 1.7.0 =
+- Added: (Almost) full implimentation of FullCalendar args (see Shortcode Options)
+- Added: Colors for multiple calendars in one.
+- Added: FullCalendar update to v6.1.9
 
 = 1.6.0 =
 - Added: Multiple calendars on one page

@@ -1,5 +1,9 @@
 <?php
+
 function pgcal_shortcode($atts) {
+
+
+
   $default = array();
   $globalSettings = get_option('pgcal_settings', $default);
 
@@ -19,6 +23,9 @@ function pgcal_shortcode($atts) {
       'id_hash'                    => bin2hex(random_bytes(5)),
       'use_tooltip'                => $globalSettings['use_tooltip'] ? "true" : "false",
       'no_link'                    => $globalSettings['no_link'] ? "true" : "false",
+      // 'fc_args'                    => '{"hiddenDays" : "[ 2, 4 ]"}',
+      'fc_args'                    => '{}',
+
     ),
     $atts
   );
