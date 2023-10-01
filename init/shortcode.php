@@ -27,6 +27,7 @@ function pgcal_shortcode($atts) {
   $pgcalSettings = $args;
 
   wp_enqueue_script('fullcalendar');
+  wp_enqueue_script('fcgooglecalendar');
   wp_enqueue_script('fc_locales');
   if ($pgcalSettings['use_tooltip'] === "true") {
     wp_enqueue_script('popper');

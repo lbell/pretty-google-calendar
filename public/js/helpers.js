@@ -10,9 +10,17 @@ const { __, _x, _n, sprintf } = wp.i18n;
 function pgcal_resolve_cals(settings) {
   let calArgs = [];
   const cals = settings["gcal"].split(",");
-  cals.forEach((cal) => {
-    calArgs.push({ googleCalendarId: cal });
-  });
+
+  for (var i = 0; i < cals.length; i++) {
+    calArgs.push({
+      googleCalendarId: cals[i],
+      className: `pgcal-event-${i}`,
+    });
+  }
+  // cals.forEach((cal) => {
+  //   calArgs.push({ googleCalendarId: cal,
+  //   className:  });
+  // });
   return calArgs;
 }
 
@@ -193,4 +201,3 @@ function pgcal_linkify(url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
 }
-
