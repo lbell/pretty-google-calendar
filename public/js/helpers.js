@@ -10,17 +10,9 @@ const { __, _x, _n, sprintf } = wp.i18n;
 function pgcal_resolve_cals(settings) {
   let calArgs = [];
   const cals = settings["gcal"].split(",");
-
-  for (var i = 0; i < cals.length; i++) {
-    calArgs.push({
-      googleCalendarId: cals[i],
-      className: `pgcal-event-${i}`,
-    });
-  }
-  // cals.forEach((cal) => {
-  //   calArgs.push({ googleCalendarId: cal,
-  //   className:  });
-  // });
+  cals.forEach((cal) => {
+    calArgs.push({ googleCalendarId: cal });
+  });
   return calArgs;
 }
 
@@ -202,27 +194,3 @@ function pgcal_linkify(url) {
   }
 }
 
-/**
- * Merge arrays overriding arguments
- *
- */
-function pgcal_argmerge(defaults, override) {
-  // override = Array.isArray(atts) ? override : Object.assign({}, override);
-  const out = {};
-
-  for (const [name, defaultVal] of Object.entries(defaults)) {
-    if (override.hasOwnProperty(name)) {
-      out[name] = override[name];
-    } else {
-      out[name] = defaultVal;
-    }
-  }
-
-  for (const name in override) {
-    if (!out.hasOwnProperty(name)) {
-      out[name] = override[name];
-    }
-  }
-
-  return out;
-}
