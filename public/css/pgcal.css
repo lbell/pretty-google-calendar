@@ -1,5 +1,5 @@
 /* Remove empty bars above and below calendar */
-#pgcalendar table {
+ table {
   margin: 0px;
 }
 
