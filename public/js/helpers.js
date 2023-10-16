@@ -11,7 +11,16 @@ function pgcal_resolve_cals(settings) {
   let calArgs = [];
   const cals = settings["gcal"].split(",");
   cals.forEach((cal) => {
-    calArgs.push({ googleCalendarId: cal });
+    const split_cal = cal.split("|");
+    if (split_cal.length == 2){ // One argument set -> change bg-color
+        calArgs.push({ googleCalendarId: split_cal[0], color: split_cal[1]});    
+    }
+    else if (split_cal.length == 3){ // Two arguments set -> change bg-color and text-color
+        calArgs.push({ googleCalendarId: split_cal[0], color: split_cal[1], textColor: split_cal[2]});
+    }
+    else { // No further args or too much args
+        calArgs.push({ googleCalendarId: split_cal[0]});
+    }
   });
   return calArgs;
 }
