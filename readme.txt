@@ -4,7 +4,7 @@ Contributors: LBell
 Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty
 Requires at least: 3.0
-Tested up to: 6.3.1
+Tested up to: 6.4.2
 Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -151,6 +151,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 == Changelog ==
 
 = 1.7.0 =
+- Tested to WordPress 6.4.2
 - Added: (Almost) full implimentation of FullCalendar args (see Shortcode Options)
 - Added: Colors for multiple calendars in one.
 - Added: FullCalendar update to v6.1.9
