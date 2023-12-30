@@ -35,17 +35,13 @@ function pgcal_register_frontend_js() {
   // wp_register_script('popper', 'https://unpkg.com/@popperjs/core@2', null, PGCAL_VER, true);
   // wp_register_script('tippy', 'https://unpkg.com/tippy.js@6', null, PGCAL_VER, true);
 
-  // wp_register_script('fullcalendar', PGCAL_URL . 'public/lib/fullcalendar/main.min.js', null, PGCAL_VER, true); // v5
   wp_register_script('fullcalendar', PGCAL_URL . 'public/lib/fullcalendar/index.global.min.js', null, PGCAL_VER, true);
-  // wp_register_script('fc_locales', PGCAL_URL . 'public/lib/fullcalendar/locales-all.min.js', null, PGCAL_VER, true); // v5
-  // TODO: Register GCAL Script
-  wp_register_script('fcgooglecalendar', PGCAL_URL . 'public/lib/fullcalendar/google-calendar/index.global.min.js', null, PGCAL_VER, true);
-
+  wp_register_script('fc_googlecalendar', PGCAL_URL . 'public/lib/fullcalendar/google-calendar/index.global.min.js', null, PGCAL_VER, true);
+  wp_register_script('fc_locales', PGCAL_URL . 'public/lib/fullcalendar/locales/locales-all.global.min.js', null, PGCAL_VER, true);
 
   wp_register_script('popper', PGCAL_URL . 'public/lib/popper/popper.min.js', null, PGCAL_VER, true);
   wp_register_script('tippy', PGCAL_URL . 'public/lib/tippy/tippy.min.js', null, PGCAL_VER, true);
 
-  // Local
   wp_register_script('pgcal_helpers', PGCAL_URL . 'public/js/helpers.js', ['wp-i18n'], PGCAL_VER, true);
   wp_register_script('pgcal_loader', PGCAL_URL . 'public/js/pgcal.js', null, PGCAL_VER, true);
   wp_register_script('pgcal_tippy', PGCAL_URL . 'public/js/tippy.js', null, PGCAL_VER, true);
@@ -63,7 +59,6 @@ function pgcal_init() {
   pgcal_register_shortcodes();
   pgcal_register_frontend_css();
   pgcal_register_frontend_js();
-  // pgcal_add_settings_page();
 }
 add_action('init', 'pgcal_init', 0);
 

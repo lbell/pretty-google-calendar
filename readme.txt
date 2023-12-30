@@ -150,7 +150,13 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 == Changelog ==
 
+= Dev
+
+- Fixed: full FullCalendar locale support
+- Updated: FC Google Calendar to 6.1.10
+
 = 1.7.0 =
+
 - Tested: WordPress 6.4.2
 - Added: (Almost) full implimentation of FullCalendar args (see Shortcode Options)
 - Added: Colors for multiple calendars in one

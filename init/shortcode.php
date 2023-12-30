@@ -2,15 +2,12 @@
 
 function pgcal_shortcode($atts) {
 
-
-
   $default = array();
   $globalSettings = get_option('pgcal_settings', $default);
 
   $args = shortcode_atts(
     array(
       'gcal'                       => "",
-      // 'locale'                     => $locale,
       'locale'                     => "en",
       'list_type'                  => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
       'custom_list_button'         => "list",
@@ -23,9 +20,7 @@ function pgcal_shortcode($atts) {
       'id_hash'                    => bin2hex(random_bytes(5)),
       'use_tooltip'                => isset($globalSettings['use_tooltip']) ? "true" : "false",
       'no_link'                    => isset($globalSettings['no_link']) ? "true" : "false",
-      // 'fc_args'                    => '{"hiddenDays" : "[ 2, 4 ]"}',
       'fc_args'                    => '{}',
-
     ),
     $atts
   );
@@ -34,8 +29,12 @@ function pgcal_shortcode($atts) {
   $pgcalSettings = $args;
 
   wp_enqueue_script('fullcalendar');
-  wp_enqueue_script('fcgooglecalendar');
-  wp_enqueue_script('fc_locales');
+  wp_enqueue_script('fc_googlecalendar');
+
+  if ($pgcalSettings['locale'] !== "en") {
+    wp_enqueue_script('fc_locales');
+  }
+
   if ($pgcalSettings['use_tooltip'] === "true") {
     wp_enqueue_script('popper');
     wp_enqueue_script('tippy');
