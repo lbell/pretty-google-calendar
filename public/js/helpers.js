@@ -27,25 +27,34 @@ function pgcal_resolve_cals(settings) {
  * @returns object
  */
 const pgcal_resolve_views = (settings) => {
-  const gridViews = ["dayGridMonth"];
-  const listViews = [
-    "listDay",
-    "listWeek",
-    "listMonth",
-    "listYear",
-    "listCustom",
-  ];
-  const allowedViews = [...listViews, ...gridViews];
+  // const gridViews = [
+  //   "dayGridDay",
+  //   "dayGridWeek",
+  //   "dayGridMonth",
+  //   "dayGridYear",
+  // ];
+  // const listViews = [
+  //   "listDay",
+  //   "listWeek",
+  //   "listMonth",
+  //   "listYear",
+  //   "listCustom",
+  // ];
+  // const otherViews = ["multiMonthYear", "timeGridWeek", "timeGridDay"];
+
+  // const allowedViews = [...listViews, ...gridViews, ...otherViews];
 
   const wantsToEnforceListviewOnMobile = pgcal_is_truthy(
     settings["enforce_listview_on_mobile"]
   );
 
-  let initialView = "dayGridMonth";
+  // let initialView = "dayGridMonth";
 
-  if (allowedViews.includes(settings["initial_view"])) {
-    initialView = settings["initial_view"];
-  }
+  // if (allowedViews.includes(settings["initial_view"])) {
+  //   initialView = settings["initial_view"];
+  // }
+
+  initialView = settings["initial_view"];
 
   const viewsArray = pgcal_csv_to_array(settings["views"]);
   const viewsIncludesList = pgcal_get_item_by_fuzzy_value(viewsArray, "list");
