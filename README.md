@@ -21,7 +21,7 @@ This is a light and simple to use plugin that embeds Google Calendars in your we
 
 Highlights:
 
-- Out of the box support for Calendar grid and agenda list view
+- Out of the box support for Calendar grid and agenda list view (and most other FullCalendar views)
 - Responsive design switches to list view on smaller screens
 - List view customizable to day, week, month, year or custom number of days
 
