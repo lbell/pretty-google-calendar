@@ -167,7 +167,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ## Changelog
 
-### Dev
+### 1.7.1
 
 - Fixed: full FullCalendar locale support
 - Updated: FC Google Calendar to 6.1.10

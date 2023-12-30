@@ -92,17 +92,6 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
       center: toolbarCenter,
       right: toolbarRight,
     },
-    // headerToolbar: pgcal_is_mobile()
-    //   ? {
-    //       left: toolbarLeft,
-    //       center: "",
-    //       right: toolbarRight,
-    //     }
-    //   : {
-    //       left: toolbarLeft,
-    //       center: toolbarCenter,
-    //       right: toolbarRight,
-    //     },
 
     eventDidMount: function (info) {
       if (pgcalSettings["use_tooltip"] === "true") {
