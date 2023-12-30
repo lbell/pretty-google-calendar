@@ -17,10 +17,6 @@ function pgcal_resolve_cals(settings) {
       className: `pgcal-event-${i}`,
     });
   }
-  // cals.forEach((cal) => {
-  //   calArgs.push({ googleCalendarId: cal,
-  //   className:  });
-  // });
   return calArgs;
 }
 
