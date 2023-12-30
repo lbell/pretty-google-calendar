@@ -169,10 +169,13 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ### 1.7.0
 
-- Tested to WordPress 6.4.2
+- Tested: WordPress 6.4.2
 - Added: (Almost) full implimentation of FullCalendar args (see Shortcode Options)
-- Added: Colors for multiple calendars in one.
-- Added: FullCalendar update to v6.1.9
+- Added: Colors for multiple calendars in one
+- Fixed: Removed view restrictions
+- Update: FullCalendar to v6.1.9
+- Update: Tippy.js to 6.3.7
+- Update: Popper.js to 2.11.8
 
 ### 1.6.2
 
