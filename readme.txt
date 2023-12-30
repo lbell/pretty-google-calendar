@@ -155,6 +155,14 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Added: Colors for multiple calendars in one.
 - Added: FullCalendar update to v6.1.9
 
+= 1.6.2 =
+
+- Fixed: Broken table margin
+
+= 1.6.1 =
+
+- Fixed: Arg parsing in shortcode
+
 = 1.6.0 =
 - Added: Multiple calendars on one page
 - Added: use_tooltip shortcode arg for calendar specific options

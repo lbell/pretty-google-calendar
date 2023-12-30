@@ -21,8 +21,8 @@ function pgcal_shortcode($atts) {
       'show_today_button'          => "true",
       'show_title'                 => "true",
       'id_hash'                    => bin2hex(random_bytes(5)),
-      'use_tooltip'                => $globalSettings['use_tooltip'] ? "true" : "false",
-      'no_link'                    => $globalSettings['no_link'] ? "true" : "false",
+      'use_tooltip'                => isset($globalSettings['use_tooltip']) ? "true" : "false",
+      'no_link'                    => isset($globalSettings['no_link']) ? "true" : "false",
       // 'fc_args'                    => '{"hiddenDays" : "[ 2, 4 ]"}',
       'fc_args'                    => '{}',
 
