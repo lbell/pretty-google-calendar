@@ -89,7 +89,7 @@ Migrating from global setting for individual calendar styling. Whether to disabl
 Allows you to override or impliment just about any FullCalendar argument (with some exception). For example: `fc_args='{"weekNumbers":"true", "eventTextColor":"red"}'`
 
 Note: any argument that contains `[]` will fail due to Wordpress' parsing of shortcodes. No workaround currently.
-Note: this is epeerimental - things may break.
+Note: this is experimental - things may break.
 
 ### Styling Multiple Calendars
 
