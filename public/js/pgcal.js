@@ -28,7 +28,8 @@ async function pgcalFetchGlobals(ajaxurl) {
 
 async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
   const globalSettings = await pgcalFetchGlobals(ajaxurl);
-  console.log(globalSettings["google_api"]);
+
+  // console.log(globalSettings["google_api"]); // DEBUG
 
   const currCal = `pgcalendar-${pgcalSettings["id_hash"]}`;
   const calendarEl = document.getElementById(currCal);
@@ -125,13 +126,13 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
       }
     },
   };
-  
+
   const pgcalOverrides = JSON.parse(pgcalSettings["fc_args"]);
   const pgCalArgs = pgcal_argmerge(pgcalDefaults, pgcalOverrides);
-  
-  // console.log(pgcalSettings["fc_args"]);
-  // console.log(JSON.stringify(pgcalDefaults));
-  // console.log(JSON.stringify(pgCalArgs));
+
+  // console.log(pgcalSettings["fc_args"]); // DEBUG
+  // console.log(JSON.stringify(pgcalDefaults, null, 2)); // DEBUG
+  // console.log(JSON.stringify(pgCalArgs, null, 2)); // DEBUG
 
   const calendar = new FullCalendar.Calendar(calendarEl, pgCalArgs);
   calendar.render();
