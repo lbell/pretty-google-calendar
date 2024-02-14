@@ -4,8 +4,8 @@ Contributors: LBell
 Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty
 Requires at least: 3.0
-Tested up to: 6.4.2
-Stable tag: 1.7.1
+Tested up to: 6.4.3
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,7 +150,12 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 == Changelog ==
 
-= 1.7.1
+= 1.7.2 = 
+
+- Tested: WordPress 6.4.3
+- Security fix
+
+= 1.7.1 =
 
 - Fixed: full FullCalendar locale support
 - Updated: FC Google Calendar to 6.1.10
