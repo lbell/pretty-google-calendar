@@ -27,6 +27,7 @@ function pgcal_shortcode($atts) {
 
   // Add the attributes from the shortcode OVERRIDING the stored settings
   $pgcalSettings = $args;
+  $pgcalSettings["id_hash"] = preg_replace('/[\W]/', '', $pgcalSettings["id_hash"]);
 
   wp_enqueue_script('fullcalendar');
   wp_enqueue_script('fc_googlecalendar');
@@ -54,7 +55,7 @@ function pgcal_shortcode($atts) {
 
   $script = "
     document.addEventListener('DOMContentLoaded', function() {
-      function pgcal_inlineScript(settings) {
+      function pgcal_inlineScript(settings) {        
         var ajaxurl = '" . admin_url('admin-ajax.php') . "';
         pgcal_render_calendar(settings, ajaxurl);
       }

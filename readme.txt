@@ -4,8 +4,8 @@ Contributors: LBell
 Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty
 Requires at least: 3.0
-Tested up to: 6.4.3
-Stable tag: 1.7.2
+Tested up to: 6.5.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,7 +78,7 @@ Sets the visibility of the "Today" button. Options: "true" and "false". Defaults
 Sets the visibility of the calendar title. Options: "true" and "false". Defaults to "true".
 
 `id_hash=random`
-Sets the ID hash for a calendar. If you have multiple calendars on a page and need to style them, you can set this to a permanent code. Otherwise, it'll randomly generate each load.
+Sets the ID hash for a calendar. If you have multiple calendars on a page and need to style them, you can set this to a permanent code. Otherwise, it'll randomly generate each load. (Note: as of v2.0.0 this can only be alphanumeric.)
 
 `use_tooltip="true"`
 Migrating from global setting for individual calendar styling. Whether the floating tooltip for event pops up on click.
@@ -149,11 +149,15 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 == Changelog ==
+= 2.0.0 =
+
+- Fixed: XSS vulnerability (required elevate privileges, not likely to be exploited). May break CSS for folks using the `id_hash` shortcode argument.
+- Tested: WordPress 6.5.2
 
 = 1.7.2 = 
 
 - Tested: WordPress 6.4.3
-- Security fix
+- Fixed: Security fix
 
 = 1.7.1 =
 
