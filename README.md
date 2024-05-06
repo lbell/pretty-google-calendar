@@ -2,7 +2,7 @@
 
 **Contributors:** LBell \
 **Donate link:** https://github.com/sponsors/lbell \
-**Tags:** calendar, google calendar, events, gcal, cal, fullcalendar, pretty calendar, pretty \
+**Tags:** calendar, google calendar, fullcalendar, gcal, pretty calendar \
 **Requires at least:** 3.0 \
 **Tested up to:** 6.5.2 \
 **Stable tag:** 2.0.0 \
