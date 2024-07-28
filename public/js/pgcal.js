@@ -84,8 +84,6 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
     // List options
     listDayFormat: { weekday: "long", month: "long", day: "numeric" },
 
-    timeZone: pgcalSettings["fixed_tz"], // TODO: Necessary?
-
     initialView: views.initial,
 
     headerToolbar: {
