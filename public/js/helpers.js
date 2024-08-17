@@ -200,7 +200,7 @@ function pgcal_mapify(text) {
  * @param {string} url
  * @returns formatted HTML url
  */
-function pgcal_linkify(url) {
+function pgcal_addToGoogle(url) {
   const buttonLabel = __("Add to Google Calendar", "pretty-google-calendar");
   if (url) {
     return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
