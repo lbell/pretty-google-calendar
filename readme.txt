@@ -153,7 +153,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 = 2.0.1 =
 
 - Tested: WordPress 6.9
-- Fixed: Prevented unauthorized disclosure of the Google API (Addresses CVE-2025-12898.)
+- Fixed: Prevent unauthorized disclosure of the Google API (CVE-2025-12898)
 
 = 2.0.0 =
 
