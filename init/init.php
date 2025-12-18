@@ -67,7 +67,7 @@ add_action('init', 'pgcal_init', 0);
  * Register admin styles
  */
 function pgcal_register_admin_css() {
-  wp_register_style('pgcal-admin-css', PGCAL_URL . 'public/css/pgcal-admin.css');
+  wp_register_style('pgcal-admin-css', PGCAL_URL . 'public/css/pgcal-admin.css', array(), PGCAL_VER);
   wp_enqueue_style('pgcal-admin-css');
 }
 
