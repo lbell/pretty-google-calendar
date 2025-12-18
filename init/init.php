@@ -91,10 +91,23 @@ function pgcal_ajax_handler() {
   $default = array();
   $globalSettings = get_option('pgcal_settings', $default);
 
-  // Send the data as a JSON response.
+  // Restrict this AJAX endpoint to administrators (or users with
+  // `manage_options`). Return an error for unauthorized callers.
+  if (! current_user_can('manage_options')) {
+    wp_send_json_error(array('message' => __('Unauthorized', 'pretty-google-calendar')), 403);
+  }
+
+  // Require a valid nonce for privileged requests. This will die with -1
+  // on failure which is expected for AJAX nonce checks.
+  check_ajax_referer('pgcal_ajax_nonce', 'security');
+
+  // Privileged users get the full settings (including `google_api`).
   wp_send_json($globalSettings);
 }
 
 // Hook the AJAX handler to WordPress.
 add_action('wp_ajax_pgcal_ajax_action', 'pgcal_ajax_handler');
-add_action('wp_ajax_nopriv_pgcal_ajax_action', 'pgcal_ajax_handler');
+// Do NOT expose this endpoint to unauthenticated users. Removing the
+// `wp_ajax_nopriv_` hook prevents anonymous requests from retrieving
+// plugin settings (including sensitive fields) via admin-ajax.php.
+// add_action('wp_ajax_nopriv_pgcal_ajax_action', 'pgcal_ajax_handler');

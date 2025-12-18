@@ -5,7 +5,7 @@
  *
  * @returns global settings
  */
-async function pgcalFetchGlobals(ajaxurl) {
+async function pgcalFetchGlobals(ajaxurl, nonce) {
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", ajaxurl, true);
@@ -14,6 +14,9 @@ async function pgcalFetchGlobals(ajaxurl) {
       "application/x-www-form-urlencoded; charset=UTF-8"
     );
     var data = "action=pgcal_ajax_action";
+    if (nonce) {
+      data += "&security=" + encodeURIComponent(nonce);
+    }
     xhr.onload = function () {
       if (xhr.status >= 200 && xhr.status < 300) {
         var response = JSON.parse(xhr.responseText);
@@ -26,8 +29,8 @@ async function pgcalFetchGlobals(ajaxurl) {
   });
 }
 
-async function pgcal_render_calendar(pgcalSettings, ajaxurl) {
-  const globalSettings = await pgcalFetchGlobals(ajaxurl);
+async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
+  const globalSettings = await pgcalFetchGlobals(ajaxurl, ajaxNonce);
 
   // console.log(globalSettings["google_api"]); // DEBUG
 

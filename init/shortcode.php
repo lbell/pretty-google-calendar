@@ -53,11 +53,15 @@ function pgcal_shortcode($atts) {
   wp_enqueue_style('fullcalendar');
   wp_enqueue_style('pgcal_css');
 
+  // Create a nonce for AJAX requests that may require privileged access.
+  $pgcal_nonce = wp_create_nonce('pgcal_ajax_nonce');
+
   $script = "
     document.addEventListener('DOMContentLoaded', function() {
-      function pgcal_inlineScript(settings) {        
+      function pgcal_inlineScript(settings) {
         var ajaxurl = '" . admin_url('admin-ajax.php') . "';
-        pgcal_render_calendar(settings, ajaxurl);
+        var pgcal_ajax_nonce = '" . $pgcal_nonce . "';
+        pgcal_render_calendar(settings, ajaxurl, pgcal_ajax_nonce);
       }
 
       pgcal_inlineScript(" . json_encode($pgcalSettings) . ");
