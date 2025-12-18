@@ -171,15 +171,11 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 - Tested: WordPress 6.9
 - Fixed: Prevented unauthorized disclosure of the Google API (Addresses CVE-2025-12898.)
-
-
  
 ### 2.0.0
 
 - Fixed: XSS vulnerability (required elevate privileges, not likely to be exploited). May break CSS for folks using the `id_hash` shortcode argument.
 - Tested: WordPress 6.5.2
-
-
 
 ### 1.7.2
 
