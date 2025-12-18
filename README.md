@@ -4,8 +4,8 @@
 **Donate link:** https://github.com/sponsors/lbell \
 **Tags:** calendar, google calendar, fullcalendar, gcal, pretty calendar \
 **Requires at least:** 3.0 \
-**Tested up to:** 6.5.2 \
-**Stable tag:** 2.0.0 \
+**Tested up to:** 6.9 \
+**Stable tag:** 2.0.1 \
 **License:** GPLv2 or later \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -167,6 +167,11 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 ## Changelog
 
+### 2.0.1
+
+- Tested: WordPress 6.9
+
+ 
 ### 2.0.0
 
 - Fixed: XSS vulnerability (required elevate privileges, not likely to be exploited). May break CSS for folks using the `id_hash` shortcode argument.
