@@ -29,6 +29,14 @@ function pgcal_shortcode($atts) {
   $pgcalSettings = $args;
   $pgcalSettings["id_hash"] = preg_replace('/[\W]/', '', $pgcalSettings["id_hash"]);
 
+  // Include public-facing global settings needed by the frontend.
+  // The Google API key is intended for client-side use to render public
+  // calendars; embed it directly in the inline settings so anonymous
+  // visitors don't rely on an AJAX endpoint to retrieve it.
+  if ( isset($globalSettings['google_api']) ) {
+    $pgcalSettings['google_api'] = $globalSettings['google_api'];
+  }
+
   wp_enqueue_script('fullcalendar');
   wp_enqueue_script('fc_googlecalendar');
 
