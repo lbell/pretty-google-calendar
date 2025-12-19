@@ -66,7 +66,7 @@ Sets the label for the listCustom button. Defaults to "list".
 Sets the view types available. If only one view is provided, no view switch buttons will be shown. Defaults to "dayGridMonth, listCustom".
 
 `initial_view="dayGridMonth"`
-Sets the default view to be displayed when opening the page. Defaults to "dayGridMonth".
+Sets the default view to be displayed when opening the page. Defaults to "dayGridMonth". Note: If only one view is specified in "views", "initial_view" will automatically be set to that view and does not need to be specified.
 
 `enforce_listview_on_mobile="true"`
 Sets the change to the list view behavior on small screens. Options: "true" and "false". Defaults to "true". This option has no effect if there is no list view declared in the "views" option.
@@ -157,6 +157,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Fixed: Admin CSS versioning
 - Fixed: Sanitization of Google API key in admin
 - Improved: id_hash generation
+- Improved: Automatic initial_view resolution when only one view is specified (Fixes #51)
 
 = 2.0.2 =
 
