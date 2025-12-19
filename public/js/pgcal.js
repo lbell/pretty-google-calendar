@@ -34,8 +34,8 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
   // directly and skip the AJAX fetch (which is now admin-only). Otherwise
   // attempt to fetch globals via AJAX (admin-only usage).
   let globalSettings = {};
-  if (pgcalSettings && pgcalSettings['google_api']) {
-    globalSettings = { 'google_api': pgcalSettings['google_api'] };
+  if (pgcalSettings && pgcalSettings["google_api"]) {
+    globalSettings = { google_api: pgcalSettings["google_api"] };
   } else {
     globalSettings = await pgcalFetchGlobals(ajaxurl, ajaxNonce);
   }
@@ -78,6 +78,27 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
           minute: "2-digit",
           meridiem: "short",
         },
+      },
+      // Standard List Views
+      listDay: {
+        type: "list",
+        duration: { days: 1 },
+        buttonText: pgcalSettings["custom_list_button"],
+      },
+      listWeek: {
+        type: "list",
+        duration: { days: 7 },
+        buttonText: pgcalSettings["custom_list_button"],
+      },
+      listMonth: {
+        type: "list",
+        duration: { months: 1 },
+        buttonText: pgcalSettings["custom_list_button"],
+      },
+      listYear: {
+        type: "list",
+        duration: { years: 1 },
+        buttonText: pgcalSettings["custom_list_button"],
       },
       // Custom List View
       listCustom: {
