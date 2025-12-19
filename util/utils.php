@@ -85,12 +85,14 @@ function pgc_resolve_views($shortcode_atts, $parsed_args) {
 /**
  * Automatically resolve the initial_view based on the provided views.
  *
- * If only a single view is provided in the views parameter, automatically
- * set initial_view to that view. This eliminates redundancy for users who
- * specify a single view.
+ * Intelligently handles initial_view configuration:
+ * - If initial_view is in the views list: use it (valid choice, either user-specified or default)
+ * - If only one view is specified: use that view
+ * - If multiple views and default view (dayGridMonth) is in the list: use the default
+ * - If multiple views but default is NOT in the list: use the first view they provided
  *
  * @param string $views        The resolved views string (comma-separated)
- * @param string $initial_view The currently set initial_view value
+ * @param string $initial_view The currently set initial_view value (default or user-provided)
  * @return string The resolved initial_view
  */
 function pgc_resolve_initial_view($views, $initial_view) {
@@ -102,6 +104,22 @@ function pgc_resolve_initial_view($views, $initial_view) {
     return $view_list[0];
   }
 
-  // Otherwise, use the provided initial_view
-  return $initial_view;
+  // For multiple views, check if the current initial_view is in the list
+  $initial_view_trimmed = trim($initial_view);
+  if (in_array($initial_view_trimmed, $view_list, true)) {
+    // It's valid, use it
+    return $initial_view_trimmed;
+  }
+
+  // initial_view is not in the views list, pick one intelligently
+  $default_view = 'dayGridMonth';
+  $has_default_in_views = in_array($default_view, $view_list, true);
+
+  // If default view is in their list, use it
+  if ($has_default_in_views) {
+    return $default_view;
+  }
+
+  // If default view is NOT in their list, use their first view
+  return $view_list[0];
 }

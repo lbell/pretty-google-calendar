@@ -32,7 +32,7 @@ function pgcal_shortcode($atts) {
   // Auto-resolve views based on user-provided attributes
   $pgcalSettings['views'] = pgc_resolve_views($atts, $args);
 
-  // Auto-resolve initial_view based on views (if singular, use that view)
+  // Auto-resolve initial_view based on views (validate it's in the list, or pick smartly)
   $pgcalSettings['initial_view'] = pgc_resolve_initial_view($pgcalSettings['views'], $pgcalSettings['initial_view']);
 
   // Include public-facing global settings needed by the frontend.
