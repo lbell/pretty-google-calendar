@@ -78,7 +78,7 @@ class pgcalSettings {
     add_settings_section(
       'pgcal-main-settings',
       esc_attr__('Usage', 'pretty-google-calendar'),
-      array($this, 'pgcal_pring_main_info'), // Callback
+      array($this, 'pgcal_print_main_info'), // Callback
       'pgcal-setting-admin' // Page
     );
 
@@ -130,7 +130,7 @@ class pgcalSettings {
   /**
    * Print the Section text
    */
-  public function pgcal_pring_main_info() {
+  public function pgcal_print_main_info() {
     printf(
       '<p>%s [pretty_google_calendar gcal="address@group.calendar.google.com"] </p>
       <p>%s <a href="https://fullcalendar.io/docs/google-calendar">https://fullcalendar.io/docs/google-calendar</a></p>
