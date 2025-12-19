@@ -81,7 +81,7 @@ function pgcal_shortcode($atts) {
   wp_add_inline_script('pgcal_loader', $script);
 
   $shortcode_output = "
-  <div id='pgcalendar-" . $pgcalSettings["id_hash"] . "' class='pgcal-container'>" . esc_html__("loading...", "pretty-google-calendar") . "</div>
+  <div id='pgcalendar-" . esc_attr($pgcalSettings["id_hash"]) . "' class='pgcal-container'>" . esc_html__("loading...", "pretty-google-calendar") . "</div>
   <div class='pgcal-branding'>" . esc_html__("Powered by", "pretty-google-calendar") . " <a href='https://wordpress.org/plugins/pretty-google-calendar/'>Pretty Google Calendar</a></div>
   ";
 

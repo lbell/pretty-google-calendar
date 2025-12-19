@@ -99,14 +99,7 @@ class pgcalSettings {
     $sanitized_input = array();
     if (isset($input['google_api']))
       // TODO test api?
-      $sanitized_input['google_api'] = $input['google_api'];
-
-    // if (isset($input['use_tooltip']))
-    //   $sanitized_input['use_tooltip'] = sanitize_text_field($input['use_tooltip']);
-
-    // if (isset($input['no_link']))
-    //   $sanitized_input['no_link'] = sanitize_text_field($input['no_link']);
-
+      $sanitized_input['google_api'] = sanitize_text_field($input['google_api']);
     return $sanitized_input;
   }
 
@@ -135,20 +128,4 @@ class pgcalSettings {
       isset($this->options['google_api']) ? esc_attr($this->options['google_api']) : ''
     );
   }
-
-  // public function pgcal_tooltip_callback() {
-  //   printf(
-  //     '<input title="%s" type="checkbox" id="use_tooltip" name="pgcal_settings[use_tooltip]" value="yes" %s />',
-  //     esc_html__("Use the popper/tooltip plugin to display event information.", "pretty-google-calendar"),
-  //     isset($this->options['use_tooltip']) ? 'checked' : ''
-  //   );
-  // }
-
-  // public function pgcal_no_link_callback() {
-  //   printf(
-  //     '<input title="%s" type="checkbox" id="no_link" name="pgcal_settings[no_link]" value="yes" %s />',
-  //     esc_html__("Disable the link to the calendar.google.com event.", "pretty-google-calendar"),
-  //     isset($this->options['no_link']) ? 'checked' : ''
-  //   );
-  // }
 }

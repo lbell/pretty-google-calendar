@@ -155,6 +155,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Fixed: Better list args parsing (Fixes #57)
 - Fixed: Removed hardcoded timezone argument for correct local time display. Override with `fc_args='{"timeZone":"###"}'` if needed.
 - Fixed: Admin CSS versioning
+- Fixed: Sanitization of Google API key in admin
 - Improved: id_hash generation
 
 = 2.0.2 =
