@@ -32,6 +32,9 @@ function pgcal_shortcode($atts) {
   // Auto-resolve views based on user-provided attributes
   $pgcalSettings['views'] = pgc_resolve_views($atts, $args);
 
+  // Auto-resolve initial_view based on views (if singular, use that view)
+  $pgcalSettings['initial_view'] = pgc_resolve_initial_view($pgcalSettings['views'], $pgcalSettings['initial_view']);
+
   // Include public-facing global settings needed by the frontend.
   // The Google API key is intended for client-side use to render public
   // calendars; embed it directly in the inline settings so anonymous

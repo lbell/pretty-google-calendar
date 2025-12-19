@@ -81,3 +81,27 @@ function pgc_resolve_views($shortcode_atts, $parsed_args) {
   // Default: use existing views
   return $current_views;
 }
+
+/**
+ * Automatically resolve the initial_view based on the provided views.
+ *
+ * If only a single view is provided in the views parameter, automatically
+ * set initial_view to that view. This eliminates redundancy for users who
+ * specify a single view.
+ *
+ * @param string $views        The resolved views string (comma-separated)
+ * @param string $initial_view The currently set initial_view value
+ * @return string The resolved initial_view
+ */
+function pgc_resolve_initial_view($views, $initial_view) {
+  // Parse views into individual view names
+  $view_list = array_map('trim', explode(',', $views));
+
+  // If there's only one view, use it as the initial view
+  if (count($view_list) === 1) {
+    return $view_list[0];
+  }
+
+  // Otherwise, use the provided initial_view
+  return $initial_view;
+}
