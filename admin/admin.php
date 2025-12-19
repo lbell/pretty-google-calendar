@@ -61,7 +61,6 @@ class pgcalSettings {
       submit_button();
       ?>
     </form>
-    </div>
 <?php
   }
 
