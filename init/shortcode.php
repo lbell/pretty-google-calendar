@@ -29,39 +29,8 @@ function pgcal_shortcode($atts) {
   $pgcalSettings = $args;
   $pgcalSettings["id_hash"] = preg_replace('/[\W]/', '', $pgcalSettings["id_hash"]);
 
-  // If list_type was explicitly specified and differs from default, update views accordingly
-  $list_type = trim($pgcalSettings['list_type']);
-  $user_provided_views = isset($atts['views']); // Check if user explicitly provided views
-  $user_provided_list_type = isset($atts['list_type']); // Check if user explicitly provided list_type
-  $user_provided_fc_args = isset($atts['fc_args']) && $atts['fc_args'] !== '{}'; // Check if user provided meaningful fc_args
-
-  // Only auto-adjust views if user provided list_type but not views
-  if ($user_provided_list_type && !$user_provided_views && $list_type !== "listCustom") {
-    // Replace listCustom with the specified list_type in the views
-    $pgcalSettings['views'] = "dayGridMonth, " . $list_type;
-  } else if ($user_provided_list_type && !$user_provided_views && $list_type === "listCustom") {
-    // If list_type is explicitly set to listCustom, ensure it's in views
-    $views = array_map('trim', explode(',', $pgcalSettings['views']));
-    $list_type_found = false;
-    foreach ($views as $view) {
-      if (strpos(strtolower($view), strtolower($list_type)) !== false) {
-        $list_type_found = true;
-        break;
-      }
-    }
-    if (!$list_type_found) {
-      $views[] = $list_type;
-      $pgcalSettings['views'] = implode(', ', $views);
-    }
-  } else if ($user_provided_fc_args && !$user_provided_views && !$user_provided_list_type) {
-    // If user provided fc_args to configure views but didn't specify views or list_type,
-    // use only dayGridMonth to avoid conflicting view buttons
-    $pgcalSettings['views'] = "dayGridMonth";
-  } else if (!$user_provided_list_type && !$user_provided_views && !$user_provided_fc_args) {
-    // Use defaults - no changes needed (dayGridMonth, listCustom)
-  } else if ($user_provided_views && !$user_provided_list_type) {
-    // User provided views but not list_type - no auto-adjustment needed
-  }
+  // Auto-resolve views based on user-provided attributes
+  $pgcalSettings['views'] = pgc_resolve_views($atts, $args);
 
   // Include public-facing global settings needed by the frontend.
   // The Google API key is intended for client-side use to render public

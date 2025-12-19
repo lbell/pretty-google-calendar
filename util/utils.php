@@ -19,3 +19,65 @@ function pgc_generate_unique_id_hash() {
 
   return bin2hex(hash('sha256', $unique_data, true));
 }
+
+/**
+ * Automatically resolve the calendar views based on user-provided attributes.
+ *
+ * Intelligently handles view configuration with the following logic:
+ * - If user provides list_type but not views: auto-adjust views to include it
+ * - If user provides fc_args but not views/list_type: use only dayGridMonth
+ * - If user provides views explicitly: use as-is, no auto-adjustment
+ * - Otherwise: use defaults (dayGridMonth, listCustom)
+ *
+ * @param array $shortcode_atts User-provided shortcode attributes
+ * @param array $parsed_args    Parsed arguments with defaults applied
+ * @return string Resolved views string (comma-separated)
+ */
+function pgc_resolve_views($shortcode_atts, $parsed_args) {
+  $list_type = trim($parsed_args['list_type']);
+  $current_views = $parsed_args['views'];
+
+  // Determine what the user explicitly provided
+  $user_provided_views = isset($shortcode_atts['views']);
+  $user_provided_list_type = isset($shortcode_atts['list_type']);
+  $user_provided_fc_args = isset($shortcode_atts['fc_args']) && $shortcode_atts['fc_args'] !== '{}';
+
+  // If user explicitly provided views, use them as-is
+  if ($user_provided_views) {
+    return $current_views;
+  }
+
+  // If user provided fc_args without views/list_type, use only dayGridMonth
+  if ($user_provided_fc_args && !$user_provided_list_type) {
+    return 'dayGridMonth';
+  }
+
+  // If user provided list_type but not views, auto-adjust
+  if ($user_provided_list_type) {
+    if ($list_type === 'listCustom') {
+      // Ensure listCustom is in the views
+      $views = array_map('trim', explode(',', $current_views));
+      $list_type_found = false;
+
+      foreach ($views as $view) {
+        if (stripos($view, $list_type) !== false) {
+          $list_type_found = true;
+          break;
+        }
+      }
+
+      if (!$list_type_found) {
+        $views[] = $list_type;
+        return implode(', ', $views);
+      }
+
+      return $current_views;
+    } else {
+      // Replace listCustom with the specified list_type
+      return 'dayGridMonth, ' . $list_type;
+    }
+  }
+
+  // Default: use existing views
+  return $current_views;
+}
