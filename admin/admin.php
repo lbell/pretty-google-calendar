@@ -89,22 +89,6 @@ class pgcalSettings {
       'pgcal-setting-admin', // Page
       'pgcal-main-settings' // Section
     );
-
-    // add_settings_field(
-    //   'use_tooltip',
-    //   esc_attr__('Use Tooltip (Migrating to shortcode attribute use_tooltip)', 'pretty-google-calendar'),
-    //   array($this, 'pgcal_tooltip_callback'),
-    //   'pgcal-setting-admin',
-    //   'pgcal-main-settings'
-    // );
-
-    // add_settings_field(
-    //   'no_link',
-    //   esc_attr__('Disable Event Link (Migrating to shortcode attribute no_link)', 'pretty-google-calendar'),
-    //   array($this, 'pgcal_no_link_callback'),
-    //   'pgcal-setting-admin',
-    //   'pgcal-main-settings'
-    // );
   }
 
   /**
