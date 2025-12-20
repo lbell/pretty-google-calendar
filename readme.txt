@@ -5,7 +5,7 @@ Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, fullcalendar, gcal, pretty calendar
 Requires at least: 3.0
 Tested up to: 6.9
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,7 +150,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 
 == Changelog ==
-= 2.0.3 =
+= 2.1.0 =
 
 - Fixed: Better list args parsing (Fixes #57)
 - Fixed: Removed hardcoded timezone argument for correct local time display. Override with `fc_args='{"timeZone":"###"}'` if needed.
@@ -161,7 +161,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 = 2.0.2 =
 
-- Fixed: Prevent unauthorized disclosure of the Google API (CVE-2025-12898)
+- Fixed: Security fix (no known exploit)
 
 = 2.0.1 =
 
