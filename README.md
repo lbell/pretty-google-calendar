@@ -118,12 +118,12 @@ The following improvements were made in v2.2.0 for easier styling of multiple ca
 1. Click Create credentials → API key.
 1. Copy the API key.
 1. (Recommended) Restrict the key:
-  1. Click the API key you just created.
-  1. Under Application restrictions, choose Websites (HTTP referrers).
-  1. Add your site’s URL (e.g. https://example.com/*).
-  1. Under API restrictions, choose Restrict key.
-  1. Select Google Calendar API.
-  1. Click Save.
+    1. Click the API key you just created.
+    1. Under Application restrictions, choose Websites (HTTP referrers).
+    1. Add your site’s URL (e.g. https://example.com/*).
+    1. Under API restrictions, choose Restrict key.
+    1. Select Google Calendar API.
+    1. Click Save.
 1. Paste the API key into Pretty Google Calendar’s Google API field in WordPress and save.
 
 
