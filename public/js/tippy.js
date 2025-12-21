@@ -21,6 +21,9 @@ function pgcal_tippyRender(info, currCal) {
     : "";
 
   let toolContent = `
+    <button class="pgcal-tooltip-close" aria-label="Close" type="button" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; color: inherit; opacity: 0.7;">
+      <span aria-hidden="true">&times;</span>
+    </button>
     <h2>${info.event.title} </h2>
     <p>${startTime}${endTime}</p>
     ${locString}`;
@@ -57,5 +60,26 @@ function pgcal_tippyRender(info, currCal) {
     appendTo: document.getElementById(currCal),
     maxWidth: 600, // TODO: from settings
     boundary: "window",
+    onShow(instance) {
+      // Attach close button handler when tooltip is shown
+      const closeBtn = instance.popper.querySelector(".pgcal-tooltip-close");
+      if (closeBtn) {
+        const handleCloseClick = (e) => {
+          e.stopPropagation(); // Prevent triggering other click handlers
+          instance.hide();
+        };
+        closeBtn.addEventListener("click", handleCloseClick);
+        // Store reference for cleanup
+        closeBtn._pgcalCloseHandler = handleCloseClick;
+      }
+    },
+    onHide(instance) {
+      // Remove close button handler when tooltip is hidden
+      const closeBtn = instance.popper.querySelector(".pgcal-tooltip-close");
+      if (closeBtn && closeBtn._pgcalCloseHandler) {
+        closeBtn.removeEventListener("click", closeBtn._pgcalCloseHandler);
+        delete closeBtn._pgcalCloseHandler;
+      }
+    },
   });
 }

@@ -107,7 +107,4 @@ function pgcal_ajax_handler() {
 
 // Hook the AJAX handler to WordPress.
 add_action('wp_ajax_pgcal_ajax_action', 'pgcal_ajax_handler');
-// Do NOT expose this endpoint to unauthenticated users. Removing the
-// `wp_ajax_nopriv_` hook prevents anonymous requests from retrieving
-// plugin settings (including sensitive fields) via admin-ajax.php.
-// add_action('wp_ajax_nopriv_pgcal_ajax_action', 'pgcal_ajax_handler');
+

@@ -37,9 +37,6 @@ function pgcal_shortcode($atts) {
   $pgcalSettings['initial_view'] = pgc_resolve_initial_view($pgcalSettings['views'], $pgcalSettings['initial_view']);
 
   // Include public-facing global settings needed by the frontend.
-  // The Google API key is intended for client-side use to render public
-  // calendars; embed it directly in the inline settings so anonymous
-  // visitors don't rely on an AJAX endpoint to retrieve it.
   if (isset($globalSettings['google_api'])) {
     $pgcalSettings['google_api'] = $globalSettings['google_api'];
   }
