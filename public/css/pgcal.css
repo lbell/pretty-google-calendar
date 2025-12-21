@@ -1,3 +1,7 @@
+.pgcal-container {
+  --fc-event-text-color: inherit;
+}
+
 /* Remove empty bars above and below calendar */
 .pgcal-container table {
   margin: 0px;
