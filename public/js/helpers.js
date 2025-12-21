@@ -9,7 +9,7 @@ const { __, _x, _n, sprintf } = wp.i18n;
  */
 function pgcal_resolve_cals(settings) {
   let calArgs = [];
-  const cals = settings["gcal"].split(",");
+  const cals = settings["gcal"].split(",").map((cal) => cal.trim());
 
   for (var i = 0; i < cals.length; i++) {
     calArgs.push({
