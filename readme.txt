@@ -163,6 +163,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Added: Better CSS in tooltip (Closes #56)
 - Added: Handle displayEventEnd arg in popup
 - Added: Download .ics button in popup
+- Added: Pupup button styling
 
 = 2.1.0 =
 
