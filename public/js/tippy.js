@@ -1,7 +1,7 @@
 function pgcal_tippyRender(info, currCal, pgcalSettings) {
   // console.log(info.event); // DEBUG
   // console.table(info.event.extendedProps); // DEBUG
-  console.log(info.el.classList); // DEBUG
+  // console.log(info.el.classList); // DEBUG
 
   // Extract calendar index from event element for styling
   let popupClass = "";
