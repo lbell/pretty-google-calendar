@@ -132,7 +132,7 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
       }
 
       if (pgcalSettings["use_tooltip"] === "true") {
-        pgcal_tippyRender(info, currCal);
+        pgcal_tippyRender(info, currCal, pgcalSettings);
       }
     },
 

@@ -47,11 +47,6 @@ function pgc_resolve_views($shortcode_atts, $parsed_args) {
     return $current_views;
   }
 
-  // If user provided fc_args without views/list_type, use only dayGridMonth
-  if ($user_provided_fc_args && !$user_provided_list_type) {
-    return 'dayGridMonth';
-  }
-
   // If user provided list_type but not views, auto-adjust
   if ($user_provided_list_type) {
     if ($list_type === 'listCustom') {

@@ -1,4 +1,4 @@
-function pgcal_tippyRender(info, currCal) {
+function pgcal_tippyRender(info, currCal, pgcalSettings) {
   // console.log(info.event); // DEBUG
   // console.table(info.event.extendedProps); // DEBUG
 
@@ -9,13 +9,27 @@ function pgcal_tippyRender(info, currCal) {
         minute: "2-digit",
       });
 
-  const endTime = info.event.allDay
-    ? ""
-    : " - " +
-      new Date(info.event.endStr).toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit",
-      });
+  // Check if displayEventEnd is disabled via fc_args
+  let displayEventEnd = true;
+  if (pgcalSettings && pgcalSettings["fc_args"]) {
+    try {
+      const fcArgs = JSON.parse(pgcalSettings["fc_args"]);
+      if (fcArgs.hasOwnProperty("displayEventEnd")) {
+        displayEventEnd = fcArgs.displayEventEnd;
+      }
+    } catch (e) {
+      // Invalid JSON, use default
+    }
+  }
+
+  const endTime =
+    !displayEventEnd || info.event.allDay
+      ? ""
+      : " - " +
+        new Date(info.event.endStr).toLocaleTimeString([], {
+          hour: "numeric",
+          minute: "2-digit",
+        });
 
   const location = info.event.extendedProps.location || "";
 
@@ -25,16 +39,17 @@ function pgcal_tippyRender(info, currCal) {
 
   // Handle free/busy calendars with undefined titles
   // Google Calendar API returns the string "undefined" for free/busy events
-  const eventTitle = (!info.event.title || info.event.title === "undefined") 
-    ? __("Busy", "pretty-google-calendar") 
-    : info.event.title;
+  const eventTitle =
+    !info.event.title || info.event.title === "undefined"
+      ? __("Busy", "pretty-google-calendar")
+      : info.event.title;
 
   let toolContent = `
     <button class="pgcal-tooltip-close" aria-label="Close" type="button" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; color: inherit; opacity: 0.7;">
       <span aria-hidden="true">&times;</span>
     </button>
     <h2 class="pgcal-event-title">${eventTitle} </h2>
-    <p class="pgcal-event-time">${startTime}${endTime}</p>
+    <p class="pgcal-event-time"><span class="pgcal-event-start-time">${startTime}</span><span class="pgcal-event-end-time">${endTime}</span></p>
     ${locString}`;
 
   const description = pgcal_breakify(
@@ -45,7 +60,9 @@ function pgcal_tippyRender(info, currCal) {
     : "";
 
   const mapHtml = location ? pgcal_mapify(location) : "";
-  const addToGoogleHtml = info.event.url ? pgcal_addToGoogle(info.event.url) : "";
+  const addToGoogleHtml = info.event.url
+    ? pgcal_addToGoogle(info.event.url)
+    : "";
   const actionsHtml = [mapHtml, addToGoogleHtml].filter(Boolean).join(" ");
 
   if (actionsHtml) {
