@@ -45,6 +45,10 @@ How it works:
 `gcal="CalendarID,CalendarID"`\
 Calendar ID of the desired google calendar (note: must be set to 'Make available to public'. To display multiple calendars, separate ID's by a comma. (Note: calendars must fall under same API access.))
 
+`cal_ids="identifier,identifier"` \
+Optional custom CSS identifiers for each calendar (must match the number of calendars in `gcal`). Allows using meaningful names instead of numeric indexes for styling. Example: `cal_ids="soccer,baseball"` generates classes like `.pgcal-calendar-soccer` and `.pgcal-calendar-baseball`. Identifiers should be lowercase alphanumeric with hyphens.
+Defaults to numeric indexes (0, 1, 2, etc.)
+
 `locale="en"` \
 Sets the locale for calendar. Defaults to "en".
 
@@ -97,6 +101,12 @@ Note: this is experimental - things may break.
 ### Styling Multiple Calendars
 
 As of v1.7.0, each calendar gets it's own CSS selector: `pgcal-event-#` where the # is the order of the listed calendar (starting with 0). So if you have two calendars in one, you can use `pgcal-event-0` to style the first, and `pgcal-event-1` to style the second calendar.
+
+The following improvements were made in v2.2.0 for easier styling of multiple calendars:
+- Custom calendar identifiers via `cal_ids` shortcode argument (see above) (defaults to numeric indexes if not provided).
+- Events get new class name: `pgcal-calendar-0-event` for consistent naming convention (old class `pgcal-event-0` is still supported for backward compatibility).
+- Event pop-up tooltips now get a calendar-specific class: `pgcal-calendar-0-event-popup` for easier styling of event pop-ups per calendar.
+
 
 ### Obtaining Google Calendar API Key
 
@@ -181,6 +191,8 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Added: Handle displayEventEnd arg in popup 
 - Added: Download .ics button in popup
 - Added: Pupup button styling
+- Added: calendar-specific popup styling classes (closes #46)
+- Added: Custom calendar identifiers via `cal_ids` shortcode arg
 
 ### 2.1.0
 

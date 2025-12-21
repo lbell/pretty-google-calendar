@@ -5,22 +5,35 @@ const { __, _x, _n, sprintf } = wp.i18n;
  * builds eventSources object.
  *
  * @param {array} settings Settings received from shortcode parameters
- * @returns object
+ * @returns object with eventSources array and identifiers array
  */
 function pgcal_resolve_cals(settings) {
   let calArgs = [];
+  let identifiers = [];
   const cals = settings["gcal"]
     .split(",")
     .map((cal) => cal.trim())
     .filter((cal) => cal.length > 0);
 
+  // Parse custom calendar identifiers if provided
+  let customIds = [];
+  if (settings["cal_ids"]) {
+    customIds = settings["cal_ids"]
+      .split(",")
+      .map((id) => id.trim())
+      .filter((id) => id.length > 0);
+  }
+
   for (var i = 0; i < cals.length; i++) {
+    // Use custom ID if available, otherwise fall back to numeric index
+    const identifier = customIds[i] || i;
+    identifiers.push(identifier);
     calArgs.push({
       googleCalendarId: cals[i],
-      className: `pgcal-event-${i}`,
+      className: `pgcal-event-${identifier} pgcal-calendar-${identifier}-event`, // For per-calendar styling
     });
   }
-  return calArgs;
+  return { eventSources: calArgs, identifiers: identifiers };
 }
 
 /**

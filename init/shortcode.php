@@ -8,6 +8,7 @@ function pgcal_shortcode($atts) {
   $args = shortcode_atts(
     array(
       'gcal'                       => "",
+      'cal_ids'                    => "",
       'locale'                     => "en",
       'list_type'                  => "listCustom", // listDay, listWeek, listMonth, and listYear also day, week, month, and year
       'custom_list_button'         => "list",

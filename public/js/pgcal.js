@@ -48,7 +48,8 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
   let width = window.innerWidth;
 
   const views = pgcal_resolve_views(pgcalSettings);
-  const cals = pgcal_resolve_cals(pgcalSettings);
+  const calData = pgcal_resolve_cals(pgcalSettings);
+  const cals = calData.eventSources;
 
   // console.table(cals); // DEBUG
   // console.table(pgcalSettings); // DEBUG

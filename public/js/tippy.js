@@ -1,6 +1,17 @@
 function pgcal_tippyRender(info, currCal, pgcalSettings) {
   // console.log(info.event); // DEBUG
   // console.table(info.event.extendedProps); // DEBUG
+  console.log(info.el.classList); // DEBUG
+
+  // Extract calendar index from event element for styling
+  let popupClass = "";
+  for (let className of info.el.classList) {
+    if (className.startsWith("pgcal-event-")) {
+      const calendarIndex = className.replace("pgcal-event-", "");
+      popupClass = `pgcal-calendar-${calendarIndex}-popup`;
+      break;
+    }
+  }
 
   const startTime = info.event.allDay
     ? "All Day"
@@ -64,7 +75,9 @@ function pgcal_tippyRender(info, currCal, pgcalSettings) {
     ? pgcal_addToGoogle(info.event.url)
     : "";
   const downloadICSHtml = pgcal_downloadEventICS(info.event);
-  const actionsHtml = [mapHtml, addToGoogleHtml, downloadICSHtml].filter(Boolean).join(" ");
+  const actionsHtml = [mapHtml, addToGoogleHtml, downloadICSHtml]
+    .filter(Boolean)
+    .join(" ");
 
   if (actionsHtml) {
     toolContent += `<div class="toolloc pgcal-event-actions">${actionsHtml}</div>`;
@@ -95,6 +108,10 @@ function pgcal_tippyRender(info, currCal, pgcalSettings) {
     maxWidth: 600, // TODO: from settings
     boundary: "window",
     onShow(instance) {
+      // Add popup class to tooltip for styling
+      if (popupClass) {
+        instance.popper.classList.add(popupClass);
+      }
       // Attach close button handler when tooltip is shown
       const closeBtn = instance.popper.querySelector(".pgcal-tooltip-close");
       if (closeBtn) {
