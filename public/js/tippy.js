@@ -1,5 +1,6 @@
 function pgcal_tippyRender(info, currCal) {
   // console.log(info.event); // DEBUG
+  console.table(info.event.extendedProps); // DEBUG
 
   const startTime = info.event.allDay
     ? "All Day"
@@ -16,25 +17,34 @@ function pgcal_tippyRender(info, currCal) {
         minute: "2-digit",
       });
 
-  const locString = info.event.extendedProps.location
-    ? `<p>${info.event.extendedProps.location}</p>`
+  const location = info.event.extendedProps.location || "";
+
+  const locString = location
+    ? `<p class="pgcal-event-location">${location}</p>`
     : "";
 
   let toolContent = `
     <button class="pgcal-tooltip-close" aria-label="Close" type="button" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; color: inherit; opacity: 0.7;">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h2>${info.event.title} </h2>
-    <p>${startTime}${endTime}</p>
+    <h2 class="pgcal-event-title">${info.event.title} </h2>
+    <p class="pgcal-event-time">${startTime}${endTime}</p>
     ${locString}`;
 
-  toolContent += pgcal_breakify(
+  const description = pgcal_breakify(
     pgcal_urlify(info.event.extendedProps.description)
   );
+  toolContent += description
+    ? `<div class="pgcal-event-description">${description}</div>`
+    : "";
 
-  toolContent += `<div class="toolloc">${pgcal_mapify(
-    info.event.extendedProps.location
-  )} ${pgcal_addToGoogle(info.event.url)}</div>`;
+  const mapHtml = location ? pgcal_mapify(location) : "";
+  const addToGoogleHtml = info.event.url ? pgcal_addToGoogle(info.event.url) : "";
+  const actionsHtml = [mapHtml, addToGoogleHtml].filter(Boolean).join(" ");
+
+  if (actionsHtml) {
+    toolContent += `<div class="toolloc pgcal-event-actions">${actionsHtml}</div>`;
+  }
 
   tippy(info.el, {
     trigger: "click",
