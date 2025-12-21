@@ -110,9 +110,22 @@ The following improvements were made in v2.2.0 for easier styling of multiple ca
 
 **Obtaining Google Calendar API Key**
 
-1. The good folks at WPBeginner have a comprehensive writeup: https://www.wpbeginner.com/plugins/how-to-add-google-calendar-in-wordpress/ 
-
-(Although in the API Restrictions Section, you may need "Don't Restrict Key" selected. YMMV.)
+1. Go to the Google Cloud Console and sign in.
+1. Click the project selector (top bar) → New project.
+1. Give the project a name and click Create.
+1. With the project selected, go to APIs & Services → Library.
+1. Search for Google Calendar API and click Enable.
+1. Go to APIs & Services → Credentials.
+1. Click Create credentials → API key.
+1. Copy the API key.
+1. (Recommended) Restrict the key:
+  1. Click the API key you just created.
+  1. Under Application restrictions, choose Websites (HTTP referrers).
+  1. Add your site’s URL (e.g. https://example.com/*).
+  1. Under API restrictions, choose Restrict key.
+  1. Select Google Calendar API.
+  1. Click Save.
+1. Paste the API key into Pretty Google Calendar’s Google API field in WordPress and save.
 
 
 Make your Google Calendar public:
@@ -129,7 +142,7 @@ Obtain your Google Calendar’s ID:
 1. In the Google Calendar interface, locate the “My calendars” area on the left.
 1. Hover over the calendar you need and click the downward arrow.
 1. A menu will appear. Click “Calendar settings”.
-1. In the “Calendar Address” section of the screen, you will see your Calendar ID. It will look something like “abcd1234@group.calendar.google.com” this is the value you enter into the shortcode.
+1. In the “Integrage Calendar” section of the screen, you will see your "Calendar ID". It will look something like “abcd1234@group.calendar.google.com” (or your email if it's your default calendar) this is the value you enter into the shortcode.
 
 == Screenshots ==
 
