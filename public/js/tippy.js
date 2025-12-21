@@ -63,7 +63,8 @@ function pgcal_tippyRender(info, currCal, pgcalSettings) {
   const addToGoogleHtml = info.event.url
     ? pgcal_addToGoogle(info.event.url)
     : "";
-  const actionsHtml = [mapHtml, addToGoogleHtml].filter(Boolean).join(" ");
+  const downloadICSHtml = pgcal_downloadEventICS(info.event);
+  const actionsHtml = [mapHtml, addToGoogleHtml, downloadICSHtml].filter(Boolean).join(" ");
 
   if (actionsHtml) {
     toolContent += `<div class="toolloc pgcal-event-actions">${actionsHtml}</div>`;

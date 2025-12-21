@@ -192,7 +192,7 @@ function pgcal_mapify(text) {
   if (text) {
     footer += `<br /><a class="button pgcal-map-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
       text
-    )}">${buttonLabel}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
+    )}">${buttonLabel}</a>`;
   }
   return footer;
 }
@@ -204,10 +204,77 @@ function pgcal_mapify(text) {
  * @returns formatted HTML url
  */
 function pgcal_addToGoogle(url) {
-  const buttonLabel = __("Add to Google Calendar", "pretty-google-calendar");
+  const buttonLabel = __("Add to Google", "pretty-google-calendar");
   if (url) {
     return `<a class="button pgcal-add-to-google-button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
+}
+
+/**
+ * Create .ics download link for event
+ *
+ * @param {object} event FullCalendar event object
+ * @returns {string} HTML with download link
+ */
+function pgcal_downloadEventICS(event) {
+  // Sanitize text for iCalendar format
+  const sanitize = (str) => {
+    if (!str) return "";
+    return String(str)
+      .replace(/\\/g, "\\\\")
+      .replace(/;/g, "\\;")
+      .replace(/,/g, "\\,")
+      .replace(/\n/g, "\\n");
+  };
+
+  // Format dates for iCalendar
+  const formatICSDate = (dateStr, allDay) => {
+    const date = new Date(dateStr);
+    if (allDay) {
+      const year = date.getUTCFullYear();
+      const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const day = String(date.getUTCDate()).padStart(2, "0");
+      return `${year}${month}${day}`;
+    } else {
+      const year = date.getUTCFullYear();
+      const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const day = String(date.getUTCDate()).padStart(2, "0");
+      const hours = String(date.getUTCHours()).padStart(2, "0");
+      const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+      const seconds = String(date.getUTCSeconds()).padStart(2, "0");
+      return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
+    }
+  };
+
+  const startDate = formatICSDate(event.startStr, event.allDay);
+  const endDate = event.endStr
+    ? formatICSDate(event.endStr, event.allDay)
+    : startDate;
+  const uid = `${event.id || "event"}@pretty-google-calendar`;
+
+  let ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Pretty Google Calendar//EN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nBEGIN:VEVENT\nUID:${uid}\nDTSTAMP:${formatICSDate(
+    new Date().toISOString(),
+    false
+  )}\nDTSTART${event.allDay ? ";VALUE=DATE" : ""}:${startDate}\nDTEND${
+    event.allDay ? ";VALUE=DATE" : ""
+  }:${endDate}\nSUMMARY:${sanitize(event.title)}`;
+
+  if (event.extendedProps && event.extendedProps.location) {
+    ics += `\nLOCATION:${sanitize(event.extendedProps.location)}`;
+  }
+
+  if (event.extendedProps && event.extendedProps.description) {
+    ics += `\nDESCRIPTION:${sanitize(event.extendedProps.description)}`;
+  }
+
+  ics += `\nEND:VEVENT\nEND:VCALENDAR`;
+
+  const encodedICS = encodeURIComponent(ics);
+  const filename = `${event.title || "event"}.ics`;
+  const downloadLink = `data:text/calendar;charset=utf-8,${encodedICS}`;
+
+  const label = __("Download (.ics)", "pretty-google-calendar");
+  return `<a class="button pgcal-download-ics-button" href="${downloadLink}" download="${filename}">${label}</a>`;
 }
 
 /**
