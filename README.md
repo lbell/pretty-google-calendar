@@ -5,7 +5,7 @@
 **Tags:** calendar, google calendar, fullcalendar, gcal, pretty calendar \
 **Requires at least:** 3.0 \
 **Tested up to:** 6.9 \
-**Stable tag:** 2.1.0 \
+**Stable tag:** 2.2.0 \
 **License:** GPLv2 or later \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,6 +166,10 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
+### 2.2.0
+- Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
+
+
 ### 2.1.0
 
 - Fixed: Better list args parsing (Fixes #57)
@@ -268,3 +272,5 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 ### 1.1.0
 
 Initial Public Release
+
+Last commit: 4c1460637c63

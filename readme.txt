@@ -5,7 +5,7 @@ Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, fullcalendar, gcal, pretty calendar
 Requires at least: 3.0
 Tested up to: 6.9
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
