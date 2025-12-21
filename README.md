@@ -179,6 +179,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Added: close button to tooltip (Closes #59)
 - Added: Better CSS in tooltip (Closes #56)
 - Added: Handle displayEventEnd arg in popup 
+- Added: Download .ics button in popup
 
 ### 2.1.0
 
