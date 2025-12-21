@@ -157,6 +157,19 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
     },
   };
 
+  // Hide past events if requested
+  if (pgcal_is_truthy(pgcalSettings["hide_past"])) {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const todayString = `${year}-${month}-${day}`;
+
+    pgcalDefaults.validRange = {
+      start: todayString,
+    };
+  }
+
   const pgcalOverrides = JSON.parse(pgcalSettings["fc_args"]);
   const pgCalArgs = pgcal_argmerge(pgcalDefaults, pgcalOverrides);
 

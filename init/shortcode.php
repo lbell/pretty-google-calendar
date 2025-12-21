@@ -20,6 +20,7 @@ function pgcal_shortcode($atts) {
       'id_hash'                    => pgc_generate_unique_id_hash(),
       'use_tooltip'                => isset($globalSettings['use_tooltip']) ? "true" : "false",
       'no_link'                    => isset($globalSettings['no_link']) ? "true" : "false",
+      'hide_past'                  => "false",
       'fc_args'                    => '{}',
     ),
     $atts

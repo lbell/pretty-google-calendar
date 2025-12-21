@@ -76,6 +76,9 @@ Sets the visibility of the `Today` button. Options: `true` and `false`. Defaults
 `show_title="true"` \
 Sets the visibility of the calendar `title`. Options: `true` and `false`. Defaults to `true`.
 
+`hide_past="false"` \
+Hides past events from the calendar completely. Options: `true` and `false`. Defaults to `false`. When set to `true`, events before today will not be displayed in any view.
+
 `id_hash=random` \
 Sets the ID hash for a calendar. If you have multiple calendars on a page and need to style them, you can set this to a permanent code. Otherwise, it'll randomly generate each load. (Note: as of v2.0.0 this can only be alphanumeric.)
 
@@ -166,9 +169,11 @@ Pretty Google Calendar is purposefully simple and easy, set up with a few defaul
 Since it is based on Full Calendar, theoretically, anything that is possible there is possible here. Contact me for requests for additional functionality, and let's see what we can create together!
 
 ## Changelog
-### 2.2.0
-- Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
 
+### 2.2.0
+
+- Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
+- Added: hide_past shortcode arg to hide past events (Closes #48)
 
 ### 2.1.0
 
