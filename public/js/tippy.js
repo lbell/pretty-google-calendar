@@ -1,6 +1,6 @@
 function pgcal_tippyRender(info, currCal) {
   // console.log(info.event); // DEBUG
-  console.table(info.event.extendedProps); // DEBUG
+  // console.table(info.event.extendedProps); // DEBUG
 
   const startTime = info.event.allDay
     ? "All Day"
