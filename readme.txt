@@ -158,6 +158,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 - Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
 - Added: hide_past shortcode argument (Closes #48)
 - Added: close button to tooltip (Closes #59)
+- Added: css clases to Map and Add buttons in tooltip (Closes #56)
 
 = 2.1.0 =
 

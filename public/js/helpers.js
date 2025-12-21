@@ -9,7 +9,10 @@ const { __, _x, _n, sprintf } = wp.i18n;
  */
 function pgcal_resolve_cals(settings) {
   let calArgs = [];
-  const cals = settings["gcal"].split(",").map((cal) => cal.trim()).filter(cal => cal.length > 0);
+  const cals = settings["gcal"]
+    .split(",")
+    .map((cal) => cal.trim())
+    .filter((cal) => cal.length > 0);
 
   for (var i = 0; i < cals.length; i++) {
     calArgs.push({
@@ -187,7 +190,7 @@ function pgcal_mapify(text) {
   const buttonLabel = __("Map", "pretty-google-calendar");
   let footer = "";
   if (text) {
-    footer += `<br /><a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
+    footer += `<br /><a class="button pgcal-map-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURI(
       text
     )}">${buttonLabel}</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp`;
   }
@@ -203,7 +206,7 @@ function pgcal_mapify(text) {
 function pgcal_addToGoogle(url) {
   const buttonLabel = __("Add to Google Calendar", "pretty-google-calendar");
   if (url) {
-    return `<a class="button" href="${url}" target="_blank">${buttonLabel}</a>`;
+    return `<a class="button pgcal-add-to-google-button" href="${url}" target="_blank">${buttonLabel}</a>`;
   }
 }
 
