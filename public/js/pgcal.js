@@ -125,6 +125,12 @@ async function pgcal_render_calendar(pgcalSettings, ajaxurl, ajaxNonce) {
     },
 
     eventDidMount: function (info) {
+      // Handle free/busy calendars with undefined titles
+      // Google Calendar API returns the string "undefined" for free/busy events
+      if (!info.event.title || info.event.title === "undefined") {
+        info.event.setProp("title", __("Busy", "pretty-google-calendar"));
+      }
+
       if (pgcalSettings["use_tooltip"] === "true") {
         pgcal_tippyRender(info, currCal);
       }

@@ -156,6 +156,7 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 = 2.2.0 =
 
 - Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
+- Fixed: Free/busy events with undefined titles now display "Busy" (Closes #41)
 - Added: hide_past shortcode argument (Closes #48)
 - Added: close button to tooltip (Closes #59)
 - Added: Better CSS in tooltip (Closes #56)

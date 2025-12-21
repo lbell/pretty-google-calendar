@@ -23,11 +23,17 @@ function pgcal_tippyRender(info, currCal) {
     ? `<p class="pgcal-event-location">${location}</p>`
     : "";
 
+  // Handle free/busy calendars with undefined titles
+  // Google Calendar API returns the string "undefined" for free/busy events
+  const eventTitle = (!info.event.title || info.event.title === "undefined") 
+    ? __("Busy", "pretty-google-calendar") 
+    : info.event.title;
+
   let toolContent = `
     <button class="pgcal-tooltip-close" aria-label="Close" type="button" style="position: absolute; top: 8px; right: 8px; background: none; border: none; font-size: 24px; cursor: pointer; padding: 0; line-height: 1; color: inherit; opacity: 0.7;">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h2 class="pgcal-event-title">${info.event.title} </h2>
+    <h2 class="pgcal-event-title">${eventTitle} </h2>
     <p class="pgcal-event-time">${startTime}${endTime}</p>
     ${locString}`;
 
