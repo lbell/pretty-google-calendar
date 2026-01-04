@@ -5,13 +5,28 @@ Donate link: https://github.com/sponsors/lbell
 Tags: calendar, google calendar, fullcalendar, gcal, pretty calendar
 Requires at least: 3.0
 Tested up to: 6.9
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Embedded Google Calendars that don't suck.
 
 == Description ==
+
+= Plugin Migration Notice =
+
+Pretty Google Calendar is transitioning to [Hydrogen Calendar Embeds](https://wordpress.org/plugins/hydrogen-calendar-embeds/). Please install that plugin for future updates and improvements.
+
+= Why Switch to Hydrogen Calendar Embeds? =
+
+* No more fussing with the Google API — just use simple .ics calendar feeds
+* Display any calendar that provides a public .ics feed (e.g. Google Calendar, Apple Calendar, Outlook, etc.)
+* Works with **blocks** *and* **shortcodes**
+* More features, fewer bugs, and still lightweight
+* 100% FREE
+* Active development and ongoing support
+
+= Legacy Pretty Google Calendar Features =
 
 **You:** I just want to embed a Google Calendar in my WordPress site.
 **Google:** Here's a special kind of ugly!
@@ -175,6 +190,9 @@ Since it is based on Full Calendar, theoretically, anything that is possible the
 
 
 == Changelog ==
+= 2.2.1 =
+- Introducing Hydrogen Calendar Embeds! (See https://wordpress.org/plugins/hydrogen-calendar-embeds/)
+
 = 2.2.0 =
 
 - Fixed: Handle spaces in multiple calendar IDs (Fixes #39)
